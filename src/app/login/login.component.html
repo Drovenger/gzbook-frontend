@@ -1,0 +1,42 @@
+<div class="container">
+  <!--  <div style="width: 20%"></div>-->
+  <div class="row" style="margin-top: 20%">
+    <div class="col-sm-7">
+      <div class="card" style="width: fit-content; border:0px; background: #f0f2f5">
+        <div style="text-align: center">
+          <img class="card-img-top" src="../../assets/gz-logo.png" alt="Logo" style="width: 31%">
+        </div>
+        <div class="card-body">
+          <p class="card-text" style="font-size: 28px">
+            GZBook giúp bạn kết nối và chia sẻ với mọi người trong cuộc sống của bạn.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <form class="form-signin" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input type="email" id="email" name="email" formControlName="email" class="form-control"
+                 placeholder="Nhập email đã đăng ký"
+                 required="Hãy nhập vào email!" autofocus="">
+        </div>
+        <div class="form-group">
+          <input type="password" id="password" class="form-control" name="password" formControlName="password"
+                 placeholder="Mật khẩu" required="">
+        </div>
+        <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i>Đăng nhập</button>
+        <a href="#" id="forgot_pswd">Quên mật khẩu?</a>
+        <div class="social-login" style="text-align: center; margin-bottom: 5px">
+          <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Đăng nhập bằng Facebook</span>
+          </button>
+        </div>
+        <hr>
+        <!-- <p>Don't have an account!</p>  -->
+        <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i>Đăng ký
+          tài khoản mới
+        </button>
+      </form>
+      <br>
+    </div>
+  </div>
+</div>
