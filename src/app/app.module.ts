@@ -4,19 +4,19 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {StoreModule} from '@ngrx/store';
-import {reducers} from './_reducers';
+import { LoginAndRegisterComponent } from './login-and-register/login-and-register.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    LoginComponent,
-    HomeComponent
+    HomeComponent,
+    LoginAndRegisterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +24,6 @@ import {reducers} from './_reducers';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot(reducers)
   ],
   providers: [],
   bootstrap: [AppComponent]
