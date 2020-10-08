@@ -10,6 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { LoginAndRegisterComponent } from './login-and-register/login-and-register.component';
 import { HeaderComponent } from './header/header.component';
 import {FriendlistComponent} from './friendlist/friendlist.component';
+import { SearchUserComponent } from './search-user/search-user.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {FriendlistComponent} from './friendlist/friendlist.component';
     HomeComponent,
     LoginAndRegisterComponent,
     HeaderComponent,
-    FriendlistComponent
+    FriendlistComponent,
+    SearchUserComponent
   ],
   imports: [
     BrowserModule,
