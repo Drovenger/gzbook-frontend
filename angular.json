@@ -24,13 +24,19 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
+              "src/favicon.png",
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js",
+              "src/assets/js/main.min.js",
+              "src/assets/js/script.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -127,6 +133,6 @@
   },
   "defaultProject": "gzbook-frontend",
   "cli": {
-    "analytics": "c7a4db79-38da-4e0a-b649-3fed7d68203d"
+    "analytics": "efcfbf12-fa69-4b7d-bed5-b9b00cc8c65d"
   }
 }

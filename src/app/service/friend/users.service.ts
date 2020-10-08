@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {catchError, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
-import {TokenStorageService} from './signin-signup/token-storage.service';
+import {TokenStorageService} from '../token-storage.service';
 import {environment} from '../../../environments/environment';
 
 @Injectable({

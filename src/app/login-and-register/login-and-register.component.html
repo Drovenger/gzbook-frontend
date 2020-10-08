@@ -1,0 +1,52 @@
+<div class="theme-layout">
+  <div class="container-fluid pdng0">
+    <div class="row merged">
+      <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+        <div class="land-featurearea" style="background-image: url(assets/images/crop.png)">
+          <div class="land-meta" style="font-family: Helvetica, sans-serif">
+            <h1 class="display-1">GZBook</h1>
+            <h3>GZBook giúp bạn kết nối và chia sẻ với mọi người trong cuộc sống của bạn.</h3>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+        <div class="login-reg-bg">
+          <div class="log-reg-area sign">
+            <h2 class="log-title">Login</h2>
+            <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+              <div class="form-group">
+                <input type="text" name="username" [(ngModel)]="form.username" #username="ngModel" required="required"/>
+                <label class="control-label" for="username">Email</label><i class="mtrl-select"></i>
+              </div>
+              <div class="alert alert-danger" role="alert" *ngIf="f.submitted && username.invalid">Email is required!
+              </div>
+              <div class="form-group">
+                <input type="password" name="password" [(ngModel)]="form.password" #password="ngModel"
+                       required="required"/>
+                <label class="control-label" for="password">Password</label><i class="mtrl-select"></i>
+              </div>
+              <div class="alert alert-danger" role="alert" *ngIf="f.submitted && password.invalid">
+                <div *ngIf="password.errors.required">Password is required</div>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" checked="checked"/><i class="check-box"></i>Remember Me
+                </label>
+              </div>
+              <a href="#" title="" class="forgot-pwd">Forgot Password?</a>
+              <div class="submit-btns">
+                <button class="mtr-btn signin" type="submit"><span>Login</span></button>
+                <button class="mtr-btn signup ml-1" type="button"><span>Register</span></button>
+              </div>
+              <div class="form-group">
+                <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">Login
+                  failed: {{ errorMessage }}</div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
