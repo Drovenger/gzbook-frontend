@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UsersService} from '../service/friend/users.service';
 import {NgForm} from '@angular/forms';
 import {IUser} from '../model/IUser';
@@ -10,32 +10,38 @@ import {IUser} from '../model/IUser';
 })
 export class SearchUserComponent implements OnInit {
 
-  users:IUser[];
-  sumUsers:number=0;
+  users: IUser[];
+  sumUsers: number = 0;
 
-  constructor(private userService: UsersService) { }
+  constructor(private userService: UsersService) {
+  }
 
   ngOnInit(): void {
   }
-  onSubmit(form:NgForm){
+
+  onSubmit(form: NgForm) {
 
 
-    if (form.value.username==""){
+    if (form.value.username === '') {
       this.userService.findAllUser().subscribe(
-        response => {this.users = <IUser[]>response,
-          this.sumUsers=this.users.length;},
+        response => {
+          this.users = <IUser[]> response,
+            this.sumUsers = this.users.length;
+        },
         error => console.error(error)
-      )
-    }else {
+      );
+    } else {
       this.userService.findUserByUsername(form.value.username).subscribe(
-        response => {this.users = <IUser[]>response,
-          this.sumUsers=this.users.length;},
+        response => {
+          this.users = <IUser[]> response,
+            this.sumUsers = this.users.length;
+        },
         error => console.error(error)
-      )
+      );
     }
     form.reset(
       {
-        username:""
+        username: ''
       }
     );
   }
