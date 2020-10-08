@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "gzbook-frontend": {
@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "gzbook-frontend"
+    }
+  },
+  "defaultProject": "gzbook-frontend",
+  "cli": {
+    "analytics": "c7a4db79-38da-4e0a-b649-3fed7d68203d"
+  }
 }
