@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {IUser} from "../model/IUser";
-import {FriendService} from "../service/friend.service";
-import {UserService} from "../service/user.service";
+import {FriendService} from "../service/friend/friend.service";
+import {UsersService} from "../service/friend/users.service";
 
 @Component({
   selector: 'app-friendlist',
@@ -19,7 +19,7 @@ export class FriendlistComponent implements OnInit {
   userPengding:IUser;
   userRelated: IUser;
 
-  constructor(private userService: UserService,private friendService: FriendService) { }
+  constructor(private userService: UsersService, private friendService: FriendService) { }
 
   ngOnInit(): void {
     this.getFriendList();
