@@ -16,7 +16,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'search',
+    path: 'searchUser',
     component: SearchUserComponent
   },
   {

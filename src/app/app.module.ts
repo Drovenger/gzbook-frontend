@@ -11,6 +11,7 @@ import { LoginAndRegisterComponent } from './login-and-register/login-and-regist
 import { HeaderComponent } from './header/header.component';
 import {FriendlistComponent} from './friendlist/friendlist.component';
 import { SearchUserComponent } from './search-user/search-user.component';
+import { ShortcutComponent } from './shortcut/shortcut.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SearchUserComponent } from './search-user/search-user.component';
     LoginAndRegisterComponent,
     HeaderComponent,
     FriendlistComponent,
-    SearchUserComponent
+    SearchUserComponent,
+    ShortcutComponent
   ],
   imports: [
     BrowserModule,
