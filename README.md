@@ -1,3 +1,18 @@
+# GZBook
+
+PJ Name: GZBook
+
+Description: A social networking web app
+
+Technology:
+
+- Angular
+
+- Bootstrap
+
+- IDE: WebStorm
+
+
 # GzbookFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0-rc.7.
