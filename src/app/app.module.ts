@@ -18,6 +18,7 @@ import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {authInterceptorProviders} from './auth.interceptor';
+import { StatusComponent } from './status/status.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {authInterceptorProviders} from './auth.interceptor';
     FriendlistComponent,
     SearchUserComponent,
     ShortcutComponent,
-    NewPostComponent
+    NewPostComponent,
+    StatusComponent
   ],
   imports: [
     BrowserModule,
