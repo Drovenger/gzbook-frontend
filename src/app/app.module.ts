@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import {FriendlistComponent} from './friendlist/friendlist.component';
 import { SearchUserComponent } from './search-user/search-user.component';
 import { ShortcutComponent } from './shortcut/shortcut.component';
+import { NewPostComponent } from './new-post/new-post.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ShortcutComponent } from './shortcut/shortcut.component';
     HeaderComponent,
     FriendlistComponent,
     SearchUserComponent,
-    ShortcutComponent
+    ShortcutComponent,
+    NewPostComponent
   ],
   imports: [
     BrowserModule,

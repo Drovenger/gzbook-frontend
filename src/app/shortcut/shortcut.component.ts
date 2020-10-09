@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {HeaderComponent} from '../header/header.component';
+import {TokenStorageService} from '../service/token-storage.service';
 
 @Component({
   selector: 'app-shortcut',
