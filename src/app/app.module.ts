@@ -10,6 +10,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { LoginAndRegisterComponent } from './login-and-register/login-and-register.component';
 import { HeaderComponent } from './header/header.component';
 import {FriendlistComponent} from './friendlist/friendlist.component';
+import { CommentComponent } from './comment/comment.component';
+import { CommentListComponent } from './comment-list/comment-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import {FriendlistComponent} from './friendlist/friendlist.component';
     HomeComponent,
     LoginAndRegisterComponent,
     HeaderComponent,
-    FriendlistComponent
+    FriendlistComponent,
+    CommentComponent,
+    CommentListComponent
   ],
   imports: [
     BrowserModule,
