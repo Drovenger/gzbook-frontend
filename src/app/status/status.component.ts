@@ -146,8 +146,8 @@ export class StatusComponent implements OnInit {
 
   deletePost(postId: any) {
     swal({
-      title: 'Are you sure?',
-      text: 'Are you sure that you want to delete this post?',
+      title: 'Xóa bài viết?',
+      text: 'Bạn có chắc chắn muốn xóa bài viết này không?',
       icon: 'warning',
       dangerMode: true,
     })
@@ -158,7 +158,7 @@ export class StatusComponent implements OnInit {
                 let comments = commentList as IComment[];
                 for (let i = 0; i < comments.length; i++) {
                   this.commentService.deleteComment(comments[i].commentId).subscribe(
-                    res => console.log('comment deleted')
+                    res => console.log('Đã xóa bài viết!')
                   );
                 }
               }
@@ -167,7 +167,7 @@ export class StatusComponent implements OnInit {
               res => {
                 swal({
                   icon: 'success',
-                  title: 'Your post has been deleted!'
+                  title: 'Bài viết của bạn đã được xóa!'
                 });
                 this.indexDelPost.emit(this.index);
                 if (this.actRoute.snapshot.params.id != null) {
@@ -190,8 +190,8 @@ export class StatusComponent implements OnInit {
 
   sharePost(postId: number) {
     swal({
-      title: 'Are you sure?',
-      text: 'Do you want to share this post?',
+      title: 'Chia sẻ',
+      text: 'Bạn có muốn chia sẻ bài viết này?',
       icon: 'info',
       dangerMode: false,
     })
@@ -214,7 +214,7 @@ export class StatusComponent implements OnInit {
             );
             swal({
               icon: 'success',
-              title: 'This post has been shared!'
+              title: 'Bài viết này đã được chia sẻ!'
             });
           }
         }

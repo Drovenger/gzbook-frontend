@@ -1,11 +1,12 @@
 <div class="central-meta" *ngIf="user">
   <div class="new-postbox">
     <figure>
-      <img style="height: 4.8vw; width: 4.8vw; object-fit: cover" src="{{user.userAvatar}}" alt="">
+<!--      <img style="height: 4.8vw; width: 4.8vw; object-fit: cover" src="{{user.userAvatar}}" alt="">-->
     </figure>
     <div class="newpst-input">
       <form [formGroup]="creatPostForm" (ngSubmit)="creatPost()">
-        <textarea formControlName="textPost" rows="2" placeholder="write something"></textarea>
+        <textarea formControlName="textPost" rows="2"
+                  placeholder="{{user.userName}} ơi, bạn đang nghĩ gì thế?"></textarea>
         <img src="{{downloadURL}}" alt="">
         <div class="attachments">
           <ul>
@@ -19,7 +20,7 @@
               <button class="btn-danger" (click)="cancelPostImg()"><i class="fa fa-ban"></i></button>
             </li>
             <li>
-              <button type="submit">Post</button>
+              <button type="submit">Đăng</button>
             </li>
           </ul>
         </div>
