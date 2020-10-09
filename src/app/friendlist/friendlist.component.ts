@@ -32,11 +32,11 @@ export class FriendlistComponent implements OnInit {
   getFriendList() {
     this.userService.getUser().subscribe(
       response => {
-        this.userFriend = <IUser> response;
+        this.userFriend = response as IUser;
         console.log(this.userFriend.userId);
         this.friendService.getFriendList(this.userFriend.userId).subscribe(
           response => {
-            this.friendList = <IUser[]> response,
+            this.friendList = response as IUser[],
               this.sumListFriend = this.friendList.length;
           },
           error => console.error(error)
@@ -50,10 +50,10 @@ export class FriendlistComponent implements OnInit {
   getPendingList() {
     this.userService.getUser().subscribe(
       response => {
-        this.userPengding = <IUser> response;
+        this.userPengding = response as IUser;
         this.friendService.getPengdingList(this.userPengding.userId).subscribe(
           response => {
-            this.pendingList = <IUser[]> response,
+            this.pendingList = response as IUser[],
               this.sumListPending = this.pendingList.length;
           },
           error => console.error(error)
@@ -66,7 +66,7 @@ export class FriendlistComponent implements OnInit {
   getUser() {
     this.userService.getUser().subscribe(
       response => {
-        this.user = <IUser> response;
+        this.user = response as IUser;
         console.log(this.user);
       },
       error => console.error(error)
@@ -76,10 +76,10 @@ export class FriendlistComponent implements OnInit {
   unFriend(relatingId: number, statusId: number, index: number) {
     this.userService.findUserById(relatingId).subscribe(
       response => {
-        this.user = <IUser> response;
+        this.user = response as IUser;
         this.userService.getUser().subscribe(
           response => {
-            this.userRelated = <IUser> response;
+            this.userRelated = response as IUser;
             this.friendService.unFriend(this.userRelated.userId, statusId, {
               'userId': this.user.userId,
               'userName': null,
