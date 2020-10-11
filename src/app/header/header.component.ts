@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
     token: ''
   };
 
-  show: boolean = false;
+  show = false;
 
   constructor(private userService: UserService,
               private authService: AuthService,
@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
   setUser() {
     this.userService.getUser().subscribe(
       response => {
-        this.user = <IUser> response;
+        this.user = response as IUser;
       },
       error => console.error(error)
     );

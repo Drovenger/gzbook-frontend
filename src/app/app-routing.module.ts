@@ -5,6 +5,7 @@ import {LoginAndRegisterComponent} from './login-and-register/login-and-register
 import {SearchUserComponent} from './search-user/search-user.component';
 import {FriendlistComponent} from './friendlist/friendlist.component';
 import {UserPageComponent} from './user-page/user-page.component';
+import {UserInfoComponent} from './user-info/user-info.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'user/id',
     component: UserPageComponent
+  },
+  {
+    path: 'userInfor/:id',
+    component: UserInfoComponent,
   }
 ];
 
