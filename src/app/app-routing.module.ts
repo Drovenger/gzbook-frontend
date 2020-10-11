@@ -6,6 +6,7 @@ import {SearchUserComponent} from './search-user/search-user.component';
 import {FriendlistComponent} from './friendlist/friendlist.component';
 import {UserInfoComponent} from './user-info/user-info.component';
 import {EditUserInfoComponent} from './edit-user-info/edit-user-info.component';
+import {EditPasswordComponent} from './edit-password/edit-password.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'edit',
     component: EditUserInfoComponent,
+  },
+  {
+    path: 'change-password',
+    component: EditPasswordComponent,
   }
 ];
 
