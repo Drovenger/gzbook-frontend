@@ -4,7 +4,6 @@ import {HomeComponent} from './home/home.component';
 import {LoginAndRegisterComponent} from './login-and-register/login-and-register.component';
 import {SearchUserComponent} from './search-user/search-user.component';
 import {FriendlistComponent} from './friendlist/friendlist.component';
-import {UserPageComponent} from './user-page/user-page.component';
 import {UserInfoComponent} from './user-info/user-info.component';
 
 
@@ -26,11 +25,7 @@ const routes: Routes = [
     component: FriendlistComponent
   },
   {
-    path: 'user/id',
-    component: UserPageComponent
-  },
-  {
-    path: 'userInfor/:id',
+    path: 'user/:id',
     component: UserInfoComponent,
   }
 ];
