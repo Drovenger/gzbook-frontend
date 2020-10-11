@@ -17,12 +17,12 @@
             <li *ngFor="let friend of friendList; let i = index">
               <div class="nearly-pepls">
                 <figure>
-                  <a [routerLink]="'/userInfor/'+friend.userId"><img src="{{friend.userAvatar}}" alt=""></a>
+                  <a [routerLink]="'/userInfor/'+friend.id"><img src="{{friend.avatarUrl}}" alt=""></a>
                 </figure>
                 <div class="pepl-info pl-4">
-                  <h4><a [routerLink]="'/userInfor/'+friend.userId" title="">{{friend.userName}}</a></h4>
+                  <h4><a [routerLink]="'/userInfor/'+friend.id" title="">{{friend.username}}</a></h4>
                   <a title="" class="add-butn" style="background: #d7184e; color: whitesmoke" data-ripple=""
-                     (click)="unFriend(friend.userId,3,i)">unfriend</a>
+                     (click)="unFriend(friend.id,3,i)">unfriend</a>
                 </div>
               </div>
             </li>
@@ -38,14 +38,14 @@
             <li *ngFor="let friend of pendingList; let i = index">
               <div class="nearly-pepls">
                 <figure>
-                  <a [routerLink]="'/userInfor/'+friend.userId" title=""><img src="{{friend.userAvatar}}" alt=""></a>
+                  <a [routerLink]="'/userInfor/'+friend.id" title=""><img src="{{friend.avatarUrl}}" alt=""></a>
                 </figure>
                 <div class="pepl-info">
-                  <h4><a [routerLink]="'/userInfor/'+friend.userId" title=""> {{friend.userName}}</a></h4>
+                  <h4><a [routerLink]="'/userInfor/'+friend.id" title=""> {{friend.username}}</a></h4>
                   <a title="" class="add-butn more-action " style="background: #d7184e; color: whitesmoke"
-                     (click)="acceptInviteFriend(friend.userId,3,i)" data-ripple="">Delete</a>
+                     (click)="acceptInviteFriend(friend.id,3,i)" data-ripple="">Delete</a>
                   <a title="" class="add-butn" data-ripple="" style="color: whitesmoke"
-                     (click)="acceptInviteFriend(friend.userId,2,i)">Confirm</a>
+                     (click)="acceptInviteFriend(friend.id,2,i)">Confirm</a>
                 </div>
               </div>
             </li>

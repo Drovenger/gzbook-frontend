@@ -1,14 +1,14 @@
 export interface IUser {
-  userId: number;
-  userName: string;
-  userEmail: string;
-  userPassword: string;
-  userSex: string;
+  id: number;
+  username: string;
+  email: string;
+  password: string;
+  gender: string;
   dateOfBirth: string;
   about: string;
-  userAddress: string;
-  userPhoneNumber: string;
-  userAvatar: string;
-  userCoverPhoto: string;
+  address: string;
+  phoneNumber: string;
+  avatarUrl: string;
+  coverPhotoUrl: string;
   roles: string[];
 }
