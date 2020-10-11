@@ -21,11 +21,11 @@ export class PostService {
   }
 
   getPostById(id: number) {
-    return this.http.get(this.API_URL + 'findPostById/' + id);
+    return this.http.get(this.API_URL + 'findById/' + id);
   }
 
-  getAllPostByUserId(userId: number) {
-    return this.http.get(this.API_URL + 'findPostByPosterId/' + userId);
+  getAllPostByUserId(id: number) {
+    return this.http.get(this.API_URL + 'findPostByPosterId/' + id);
   }
 
   deletePost(postId: number) {
@@ -36,11 +36,11 @@ export class PostService {
     return this.http.put(this.API_URL + 'update/' + postId, post);
   }
 
-  searchPostByIdAndTextPost(userId: number, textPost: string) {
-    return this.http.get(this.API_URL + 'searchPost/' + userId + '/' + textPost);
+  searchPostByIdAndTextPost(id: number, textPost: string) {
+    return this.http.get(this.API_URL + 'searchPost/' + id + '/' + textPost);
   }
 
-  getAllImageByUserId(userId: number) {
-    return this.http.get(this.API_URL + 'findImageByPosterId/' + userId);
+  getAllImageByUserId(id: number) {
+    return this.http.get(this.API_URL + 'findImageByPosterId/' + id);
   }
 }

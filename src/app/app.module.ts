@@ -19,7 +19,10 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {authInterceptorProviders} from './auth.interceptor';
 import { StatusComponent } from './status/status.component';
-import { UserPageComponent } from './user-page/user-page.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { EditUserInfoComponent } from './edit-user-info/edit-user-info.component';
+import { EditComponent } from './edit/edit.component';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { UserPageComponent } from './user-page/user-page.component';
     ShortcutComponent,
     NewPostComponent,
     StatusComponent,
-    UserPageComponent
+    UserInfoComponent,
+    EditUserInfoComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

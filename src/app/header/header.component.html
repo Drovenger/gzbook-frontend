@@ -15,14 +15,14 @@
         <li>
           <ul>
             <li><a routerLink="/newFeed" title="">Tin tức</a></li>
-            <li><a routerLink="/userInfor/{{user.userId}}" title="">Trang của tôi</a></li>
+            <li><a routerLink="/user/{{user.id}}" title="">Trang thông tin cá nhân</a></li>
           </ul>
         </li>
         <li>
           <a href="#" title="">Dòng thời gian</a>
           <ul>
-            <li><a routerLink="/myWall/{{user.userId}}" title="">Dòng thời gian</a></li>
-            <li><a routerLink="/photo/{{user.userId}}" title="">Ảnh</a></li>
+            <li><a routerLink="/myWall/{{user.id}}" title="">Dòng thời gian</a></li>
+            <li><a routerLink="/photo/{{user.id}}" title="">Ảnh</a></li>
           </ul>
         </li>
         <li>
@@ -47,14 +47,14 @@
           <a routerLink="/home" title="">Trang chủ</a>
           <ul>
             <li><a routerLink="/newFeed" title="">Tin tức</a></li>
-            <li><a routerLink="/userInfor/{{user.userId}}" title="">Trang của tôi</a></li>
+            <li><a routerLink="/user/{{user.id}}" title="">Trang thông tin cá nhân</a></li>
           </ul>
         </li>
         <li>
           <a href="#" title="">Dòng thời gian</a>
           <ul>
-            <li><a routerLink="/myWall/{{user.userId}}" title="">Dòng thời gian</a></li>
-            <li><a routerLink="/photo/{{user.userId}}" title="">Ảnh</a></li>
+            <li><a routerLink="/myWall/{{user.id}}" title="">Dòng thời gian</a></li>
+            <li><a routerLink="/photo/{{user.id}}" title="">Ảnh</a></li>
           </ul>
         </li>
         <li>
@@ -71,7 +71,7 @@
         <li>
           <a routerLink="/searchUser" title="Tìm kiếm" data-ripple=""><i class="ti-search"></i></a>
         </li>
-<!--        <li><a routerLink="/home" title="Home" data-ripple=""><i class="ti-home"></i></a></li>-->
+        <!--        <li><a routerLink="/home" title="Home" data-ripple=""><i class="ti-home"></i></a></li>-->
         <li>
           <a href="#" title="Thông báo" data-ripple="">
             <i class="ti-bell"></i><span></span>
@@ -202,15 +202,15 @@
             <a href="messages.html" title="" class="more-mesg">view more</a>
           </div>
         </li>
-<!--        <li>-->
-<!--          <a (click)="logout()" title=""> <i class="ti-power-off" style="left: 20px"> </i></a>-->
-<!--        </li>-->
+        <!--        <li>-->
+        <!--          <a (click)="logout()" title=""> <i class="ti-power-off" style="left: 20px"> </i></a>-->
+        <!--        </li>-->
       </ul>
       <div class="user-img">
-<!--        <img style="width: 50px; height: 50px; object-fit: cover" src="{{user.userAvatar}}" alt=""-->
-<!--             [routerLink]="'/userInfor/'+ user.userId">-->
-        <a [routerLink]="'/userInfor/'+ user.userId" title=""><span
-          style="font-family: 'Segoe Ui';font-size: 16px; text-transform:capitalize">{{user.userName}} </span></a>
+        <!--        <img style="width: 50px; height: 50px; object-fit: cover" src="{{user.userAvatar}}" alt=""-->
+        <!--             [routerLink]="'/userInfor/'+ user.id">-->
+        <a [routerLink]="'/userInfor/'+ user.id" title=""><span
+          style="font-family: 'Segoe Ui';font-size: 16px; text-transform:capitalize">{{user.username}} </span></a>
       </div>
     </div>
   </div>

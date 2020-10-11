@@ -20,12 +20,12 @@
             <li *ngFor="let user of users; let i = index">
               <div class="nearly-pepls">
                 <figure>
-                  <img src="{{user.userAvatar}}" alt="" style="height: 3vw; width: 3vw; object-fit: cover">
+                  <img src="{{user.avatarUrl}}" alt="" style="height: 3vw; width: 3vw; object-fit: cover">
                 </figure>
                 <div class="pepl-info">
-                  <h4>{{user.userName}}</h4>
+                  <h4>{{user.username}}</h4>
                   <span>CodeGym</span>
-                  <a routerLink="/userInfor/{{user.userId}}" title="" class="add-butn" data-ripple="">Chi tiết</a>
+                  <a routerLink="/userInfor/{{user.id}}" title="" class="add-butn" data-ripple="">Chi tiết</a>
                 </div>
               </div>
             </li>

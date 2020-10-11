@@ -5,11 +5,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FriendService} from '../service/friend/friend.service';
 
 @Component({
-  selector: 'app-user-page',
-  templateUrl: './user-page.component.html',
-  styleUrls: ['./user-page.component.scss']
+  selector: 'app-user-info',
+  templateUrl: './user-info.component.html',
+  styleUrls: ['./user-info.component.scss']
 })
-export class UserPageComponent implements OnInit {
+export class UserInfoComponent implements OnInit {
 
   user: IUser;
   userLogin: IUser;
@@ -59,6 +59,7 @@ export class UserPageComponent implements OnInit {
               for (let j = 0; j < this.friendListLogin.length; j++) {
                 if (this.friendList[i].id === this.friendListLogin[j].id) {
                   this.mutualFriendList.push(this.friendList[i]);
+
                   console.log(this.friendList[i]);
                 }
               }

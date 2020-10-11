@@ -3,6 +3,7 @@ import {IUser} from '../model/IUser';
 import {UserService} from '../service/user.service';
 import {IPost} from '../model/IPost';
 import {PostService} from '../service/post.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class HomeComponent implements OnInit {
   allPost: IPost[];
 
   constructor(private postService: PostService,
-              private userService: UserService) {
+              private userService: UserService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -50,4 +52,7 @@ export class HomeComponent implements OnInit {
     this.getAllPost();
   }
 
+  back() {
+    this.router.navigate(['/']);
+  }
 }

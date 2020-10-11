@@ -67,7 +67,7 @@ export class StatusComponent implements OnInit {
         this.userService.findUserById(this.post.userId).subscribe(
           res => {
             let user = res as IUser;
-            this.post.posterName = user.userName;
+            this.post.posterName = user.username;
             this.post.posterAvatar = user.avatarUrl;
             this.commentService.getCommentByPostId(this.post.postId).subscribe(
               commentList => {
@@ -83,7 +83,7 @@ export class StatusComponent implements OnInit {
               this.userService.findUserById(this.sharedPost.userId).subscribe(
                 res => {
                   let user = res as IUser;
-                  this.sharedPost.posterName = user.userName;
+                  this.sharedPost.posterName = user.username;
                   this.sharedPost.posterAvatar = user.avatarUrl;
                 }
               );
