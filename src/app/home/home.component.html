@@ -1,3 +1,33 @@
 <app-header></app-header>
-<p>Home work</p>
-
+<div class="theme-layout" *ngIf="userLogin">
+  <!--<div class="theme-layout">-->
+  <section>
+    <div class="gap gray-bg">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row" id="page-contents">
+              <div class="col-lg-3">
+                <aside class="sidebar static">
+                  <app-shortcut style="position: fixed; width: 250px"></app-shortcut>
+                </aside>
+              </div>
+              <div class="col-lg-6">
+                <app-new-post (newPost)="addNewPost($event)"></app-new-post>
+                <div class="loadMore" *ngFor="let post of allPost; let i = index">
+                  <app-status [post]="post" [index]="i" (indexDelPost)="delPost($event)"
+                              (sharePostEvent)="sharePost($event)"></app-status>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <aside class="sidebar static">
+                  <!--                  <app-friend-list [idUser]="userLogin.userId"></app-friend-list>-->
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

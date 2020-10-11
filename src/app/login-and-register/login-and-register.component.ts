@@ -23,7 +23,9 @@ export class LoginAndRegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage2 = '';
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) {
+  constructor(private authService: AuthService,
+              private tokenStorage: TokenStorageService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -70,6 +72,7 @@ export class LoginAndRegisterComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     );
+    this.onSubmit();
   }
 
 }
