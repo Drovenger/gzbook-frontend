@@ -32,7 +32,7 @@ export class NewPostComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.creatPostForm = this.fb.group({
-      posterId: this.tokenStorage.getUser().id,
+      userId: this.tokenStorage.getUser().id,
       textPost: '',
       imagePost: '',
       videoPost: '',
@@ -58,7 +58,7 @@ export class NewPostComponent implements OnInit {
         this.newPost.emit(this.post);
         this.creatPostForm.reset(
           {
-            posterId: this.tokenStorage.getUser().id,
+            userId: this.tokenStorage.getUser().id,
             textPost: '',
             imagePost: '',
             videoPost: '',

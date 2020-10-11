@@ -2,14 +2,14 @@ import {IComment} from './IComment';
 
 export interface IPost {
   postId: number;
-  posterId: number;
+  userId: number;
   posterAvatar: string;
   posterName: string;
   textPost: string;
   imagePost: string;
   videoPost: string;
   linkPost: string;
-  postTime: string;
+  createdTime: string;
   postLike: number;
   postDislike: number;
   status: number;
