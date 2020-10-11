@@ -1,12 +1,13 @@
 <div class="central-meta" *ngIf="user">
   <div class="new-postbox">
     <figure>
-<!--      <img style="height: 4.8vw; width: 4.8vw; object-fit: cover" src="{{user.userAvatar}}" alt="">-->
+      <!--      <img style="height: 4.8vw; width: 4.8vw; object-fit: cover" src="{{user.userAvatar}}" alt="">-->
     </figure>
     <div class="newpst-input">
       <form [formGroup]="creatPostForm" (ngSubmit)="creatPost()">
         <textarea formControlName="textPost" rows="2"
                   placeholder="{{user.userName}} ơi, bạn đang nghĩ gì thế?"></textarea>
+        <!--        placeholder="Bạn đang nghĩ gì thế?"></textarea>-->
         <img src="{{downloadURL}}" alt="">
         <div class="attachments">
           <ul>
