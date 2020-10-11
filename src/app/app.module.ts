@@ -20,6 +20,8 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {authInterceptorProviders} from './auth.interceptor';
 import { StatusComponent } from './status/status.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { EditUserInfoComponent } from './edit-user-info/edit-user-info.component';
+import { EditComponent } from './edit/edit.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { UserInfoComponent } from './user-info/user-info.component';
     ShortcutComponent,
     NewPostComponent,
     StatusComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    EditUserInfoComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
