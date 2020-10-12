@@ -67,8 +67,6 @@ export class EditUserInfoComponent implements OnInit {
       }
     );
     this.router.navigate(['/']);
-  )
-    ;
   }
 
   get email() {

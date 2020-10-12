@@ -10,7 +10,7 @@ import {TokenStorageService} from '../service/token-storage.service';
 })
 export class LoginAndRegisterComponent implements OnInit {
 
-  gender: string[] = ['male', 'female'];
+  gender: string[] = ['Nam', 'Nữ', 'Khác'];
 
   form: any = {};
   isLoggedIn = false;
