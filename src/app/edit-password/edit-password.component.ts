@@ -51,10 +51,11 @@ export class EditPasswordComponent implements OnInit {
     this.userService.changePassword(this.tokenStorage.getUser().id, this.changePasswordForm.value.newPassword).subscribe(
       res => {
         swal({
-          icon: 'Thành công!',
+          icon: 'success',
           title: 'Mật khẩu của bạn đã được thay đổi!'
         });
       }
     );
+    this.router.navigate(['/']);
   }
 }

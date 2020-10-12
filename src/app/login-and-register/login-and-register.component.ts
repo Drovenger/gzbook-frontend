@@ -10,7 +10,7 @@ import {TokenStorageService} from '../service/token-storage.service';
 })
 export class LoginAndRegisterComponent implements OnInit {
 
-  gender: string[] = ['male', 'female'];
+  gender: string[] = ['Nam', 'Nữ', 'Khác'];
 
   form: any = {};
   isLoggedIn = false;
@@ -22,6 +22,7 @@ export class LoginAndRegisterComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage2 = '';
+  submitted = false;
 
   constructor(private authService: AuthService,
               private tokenStorage: TokenStorageService,
@@ -74,5 +75,7 @@ export class LoginAndRegisterComponent implements OnInit {
     );
     this.onSubmit();
   }
+
+  get f() { return this.form.controls; }
 
 }

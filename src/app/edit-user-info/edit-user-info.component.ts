@@ -62,10 +62,11 @@ export class EditUserInfoComponent implements OnInit {
       res => {
         swal({
           icon: 'success',
-          title: 'Your information has changed!'
+          title: 'Thông tin cá nhân của bạn đã được thay đổi!'
         });
       }
     );
+    this.router.navigate(['/']);
   }
 
   get email() {
