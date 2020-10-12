@@ -50,8 +50,8 @@ export class CommentListComponent implements OnInit {
           this.userService.findUserById(this.commentList[i].commenterId).subscribe(
             res => {
               let commenter = <IUser> res;
-              this.commentList[i].commenterName = commenter.userName;
-              this.commentList[i].commenterAvatar = commenter.userAvatar;
+              this.commentList[i].commenterName = commenter.username;
+              this.commentList[i].commenterAvatar = commenter.avatarUrl;
             })
         }
       }

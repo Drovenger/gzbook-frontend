@@ -33,8 +33,8 @@ export class FriendlistComponent implements OnInit {
     this.userService.getUser().subscribe(
       response => {
         this.userFriend = response as IUser;
-        console.log(this.userFriend.userId);
-        this.friendService.getFriendList(this.userFriend.userId).subscribe(
+        console.log(this.userFriend.id);
+        this.friendService.getFriendList(this.userFriend.id).subscribe(
           response => {
             this.friendList = response as IUser[],
               this.sumListFriend = this.friendList.length;
@@ -51,7 +51,7 @@ export class FriendlistComponent implements OnInit {
     this.userService.getUser().subscribe(
       response => {
         this.userPengding = response as IUser;
-        this.friendService.getPengdingList(this.userPengding.userId).subscribe(
+        this.friendService.getPengdingList(this.userPengding.id).subscribe(
           response => {
             this.pendingList = response as IUser[],
               this.sumListPending = this.pendingList.length;
@@ -80,17 +80,17 @@ export class FriendlistComponent implements OnInit {
         this.userService.getUser().subscribe(
           response => {
             this.userRelated = response as IUser;
-            this.friendService.unFriend(this.userRelated.userId, statusId, {
-              'userId': this.user.userId,
+            this.friendService.unFriend(this.userRelated.id, statusId, {
+              'id': this.user.id,
               'userName': null,
-              'userEmail': null,
-              'userPassword': null,
-              'userSex': null,
+              'email': null,
+              'password': null,
+              'gender': null,
               'dateOfBirth': null,
               'about': null,
-              'userAddress': null,
-              'userAvatar': null,
-              'userCoverPhoto': null,
+              'address': null,
+              'avatarUrl': null,
+              'coverPhotoUrl': null,
               'roles': null
             }).subscribe(
               response => {
@@ -116,24 +116,24 @@ export class FriendlistComponent implements OnInit {
         this.userService.getUser().subscribe(
           response => {
             this.userRelated = <IUser> response;
-            this.friendService.acceptInviteFriend(this.userRelated.userId, statusId, {
-              'userId': this.user.userId,
+            this.friendService.acceptInviteFriend(this.userRelated.id, statusId, {
+              'id': this.user.id,
               'userName': null,
-              'userEmail': null,
-              'userPassword': null,
-              'userSex': null,
+              'email': null,
+              'password': null,
+              'gender': null,
               'dateOfBirth': null,
               'about': null,
-              'userAddress': null,
-              'userAvatar': null,
-              'userCoverPhoto': null,
+              'address': null,
+              'avatarUrl': null,
+              'coverPhotoUrl': null,
               'roles': null
             }).subscribe(
               response => {
-                if (statusId == 3) {
+                if (statusId === 3) {
                   this.pendingList.splice(index, 1);
                   this.sumListPending = this.sumListPending - 1;
-                } else if (statusId == 2) {
+                } else if (statusId === 2) {
                   this.pendingList.splice(index, 1);
                   this.friendList.push(this.user);
                   this.sumListPending = this.sumListPending - 1;

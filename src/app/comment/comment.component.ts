@@ -72,7 +72,7 @@ export class CommentComponent implements OnInit {
         this.userService.getUser().subscribe(
           response => {this.userLogin = <IUser> response;
             var status;
-            this.friendService.checkFriend(this.userLogin.userId,this.post.posterId).subscribe(
+            this.friendService.checkFriend(this.userLogin.id,this.post.postId).subscribe(
               response => {status = response;
                 switch (status) {
                   case 0:
@@ -88,7 +88,7 @@ export class CommentComponent implements OnInit {
                     this.isFriend = false;
                     break;
                 };
-                if (this.userLogin.userId==this.post.posterId){
+                if (this.userLogin.id==this.post.postId){
                   this.isMe = true;
                 }
               },

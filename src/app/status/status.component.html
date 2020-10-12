@@ -6,9 +6,9 @@
 <!--                                                            src="{{post.posterAvatar}}" alt=""></a>-->
       </figure>
       <div class="friend-name">
-        <ins style="text-transform:capitalize"><a [routerLink]="'/userInfor/'+ post.posterId"
+        <ins style="text-transform:capitalize"><a [routerLink]="'/userInfor/'+ post.userId"
                                                   title="">{{post.posterName}}</a></ins>
-        <span>{{post.postTime}}</span>
+        <span>{{post.createdTime}}</span>
       </div>
       <div class="post-meta">
         <div class="description">
@@ -31,7 +31,7 @@
                       </figure>
                       <div class="friend-name">
                         <ins style="text-transform:capitalize"><a href="#" title="">{{sharedPost.posterName}}</a></ins>
-                        <span>{{sharedPost.postTime}}</span>
+                        <span>{{sharedPost.createdTime}}</span>
                       </div>
                     </div>
                     <h5 class="m-3">{{sharedPost.textPost}}</h5>
@@ -57,7 +57,7 @@
               <li data-toggle="tooltip" title="Peoples like this post">
                 <span data-toggle="modal" [attr.data-target]="'#showLikerList' + post.postId"><i class="fa fa-male"></i></span>
               </li>
-              <ng-template [ngIf]="userLogin.userId==post.posterId">
+              <ng-template [ngIf]="userLogin.id==post.userId">
                 <li data-toggle="tooltip" title="Edit">
                   <span data-toggle="modal" [attr.data-target]="'#modal' + post.postId"><i
                     class="fa fa-pencil-square-o"></i></span>
