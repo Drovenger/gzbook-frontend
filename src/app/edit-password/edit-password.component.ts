@@ -50,7 +50,7 @@ export class EditPasswordComponent implements OnInit {
   changePassword() {
     this.userService.changePassword(this.tokenStorage.getUser().id, this.changePasswordForm.value.newPassword).subscribe(
       res => {
-        swal({
+        swals({
           icon: 'success',
           title: 'Mật khẩu của bạn đã được thay đổi!'
         });
