@@ -5,7 +5,7 @@ import {TokenStorageService} from '../service/token-storage.service';
 import {CommentService} from '../service/comment.service';
 import {IComment} from '../model/IComment';
 import {NgForm} from '@angular/forms';
-import {LikeCommentService} from '../service/like-comment.service';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-comment-edit',
@@ -16,7 +16,6 @@ export class CommentEditComponent implements OnInit {
 
   constructor(private userService: UserService,
               private postService: PostService,
-              private likeCommentService: LikeCommentService,
               private tokenStorage: TokenStorageService,
               private commentService: CommentService
   ) { }
@@ -28,12 +27,14 @@ export class CommentEditComponent implements OnInit {
 
   editComment(form: NgForm) {
     this.comment.content = form.value.content;
-    this.commentService.updateComment(this.comment.commentId, this.comment).subscribe();
-    // @ts-ignore
-    Swal.fire(
-      'Done!',
-      'Your comment has been saved!',
-      'success'
-    )
+    this.comment.edited = 1;
+    this.commentService.updateComment(this.comment.id, this.comment).subscribe(
+      res => {
+        swal({
+          icon: 'success',
+          title: 'Comment của bạn đã được thay đổi!'
+        });
+      }
+  )
   }
 }

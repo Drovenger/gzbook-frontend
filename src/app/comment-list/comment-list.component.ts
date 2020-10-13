@@ -7,6 +7,7 @@ import {IUser} from '../model/IUser';
 import {IPost} from '../model/IPost';
 import {IComment} from '../model/IComment';
 import {NgForm} from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-comment-list',
@@ -59,7 +60,6 @@ export class CommentListComponent implements OnInit {
   }
 
   deleteComment(commentId: number,index : number) {
-    // @ts-ignore
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -71,7 +71,6 @@ export class CommentListComponent implements OnInit {
     })
       .then((result) => {
           if (result.value) {
-            // @ts-ignore
             Swal.fire(
               'Deleted!',
               'That comment has been deleted.',

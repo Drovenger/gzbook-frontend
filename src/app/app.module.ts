@@ -26,7 +26,6 @@ import { EditUserInfoComponent } from './edit-user-info/edit-user-info.component
 import { EditComponent } from './edit/edit.component';
 import { EditPasswordComponent } from './edit-password/edit-password.component';
 import { CommentEditComponent } from './comment-edit/comment-edit.component';
-import { CommentLikeComponent } from './comment-like/comment-like.component';
 
 
 @NgModule({
@@ -47,8 +46,7 @@ import { CommentLikeComponent } from './comment-like/comment-like.component';
     EditUserInfoComponent,
     EditComponent,
     EditPasswordComponent,
-    CommentEditComponent,
-    CommentLikeComponent
+    CommentEditComponent
   ],
   imports: [
     BrowserModule,

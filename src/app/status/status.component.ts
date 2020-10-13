@@ -158,7 +158,7 @@ export class StatusComponent implements OnInit {
               commentList => {
                 let comments = commentList as IComment[];
                 for (let i = 0; i < comments.length; i++) {
-                  this.commentService.deleteComment(comments[i].commentId).subscribe(
+                  this.commentService.deleteComment(comments[i].id).subscribe(
                     res => console.log('Đã xóa bài viết!')
                   );
                 }
