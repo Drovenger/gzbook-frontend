@@ -1,5 +1,5 @@
-export interface ILikeComment{
-  id: number,
-  commentId: number,
-  likerId: number,
+export interface ILikeComment {
+  id: number;
+  commentId: number;
+  likerId: number;
 }

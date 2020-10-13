@@ -16,53 +16,56 @@ import Swal from 'sweetalert2';
 })
 export class CommentListComponent implements OnInit {
 
-  constructor(private userService: UsersService,
-              private postService: PostService,
-              // private likeCommentService: LikeCommentService,
-              private tokenStorage: TokenStorageService,
-              private commentService: CommentService) { }
-
-  ngOnInit(): void {
-    this.getCommentList();
-    this.userService.getUser().subscribe(
-      res=>{
-        this.userLogin = <IUser>res;
-      }
-    )
-    this.postService.getPostById(this.postId).subscribe(
-      res=>{
-        this.post = <IPost>res;
-      }
-    )
-  }
+  isExpanded = false;
   @Output() newComment = new EventEmitter();
   @Output() delComment = new EventEmitter();
   @Input() postId;
   commentList: IComment[];
-
   userLogin: IUser;
-  post : IPost;
+  post: IPost;
+  idCommentEdit: number;
+  indexEdit: number;
+  comment: IComment;
+
+  constructor(private userService: UsersService,
+              private postService: PostService,
+              // private likeCommentService: LikeCommentService,
+              private tokenStorage: TokenStorageService,
+              private commentService: CommentService) {
+  }
+
+  ngOnInit(): void {
+    this.getCommentList();
+    this.userService.getUser().subscribe(
+      res => {
+        this.userLogin = res as IUser;
+      });
+    this.postService.getPostById(this.postId).subscribe(
+      res => {
+        this.post = res as IPost;
+      });
+  }
+
 
   getCommentList() {
     this.commentService.getCommentByPostId(this.postId).subscribe(
       commentList => {
-        this.commentList = <IComment[]> commentList;
+        this.commentList = commentList as IComment[];
         for (let i = 0; i < this.commentList.length; i++) {
           this.userService.findUserById(this.commentList[i].userId).subscribe(
             res => {
-              let commenter = <IUser> res;
+              let commenter = res as IUser;
               this.commentList[i].commenterName = commenter.username;
               this.commentList[i].commenterAvatar = commenter.avatarUrl;
-            })
+            });
         }
-      }
-    )
+      });
   }
 
-  deleteComment(commentId: number,index : number) {
+  deleteComment(commentId: number, index: number) {
     Swal.fire({
       title: 'Bạn muốn xóa bình luận này?',
-      text: "Bạn sẽ không thể hoàn tác!",
+      text: 'Bạn sẽ không thể hoàn tác!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
@@ -70,55 +73,46 @@ export class CommentListComponent implements OnInit {
       confirmButtonText: 'Đồng ý, xóa bình luận!'
     })
       .then((result) => {
-          if (result.value) {
-            Swal.fire(
-              'Đã xóa!',
-              'Bình luận đã được xóa',
-              'success'
-            );
-            this.commentService.deleteComment(commentId).subscribe(
-              res => {this.getCommentList();
-                this.delComment.emit(index);
-              }
-            )
-          }
+        if (result.value) {
+          Swal.fire(
+            'Đã xóa!',
+            'Bình luận đã được xóa',
+            'success'
+          );
+          this.commentService.deleteComment(commentId).subscribe(
+            res => {
+              this.getCommentList();
+              this.delComment.emit(index);
+            });
         }
-      )
+      });
   }
 
-  idCommentEdit:number;
-  indexEdit: number;
-  comment: IComment;
-
   getIdComment(commentId: number, i: number) {
-    this.idCommentEdit= commentId;
-    this.indexEdit=i;
+    this.idCommentEdit = commentId;
+    this.indexEdit = i;
   }
 
   onSubmit(form: NgForm) {
     this.commentService.getCommentById(this.idCommentEdit).subscribe(
       resPost => {
-        this.comment = <IComment> resPost;
+        this.comment = resPost as IComment;
         this.comment.content = form.value.content;
-        this.commentService.updateComment(this.idCommentEdit,this.comment).subscribe(
+        this.commentService.updateComment(this.idCommentEdit, this.comment).subscribe(
           resPost => {
-            for (let i = 0 ; i<= this.commentList.length; i++){
-              if (i == this.indexEdit){
+            for (let i = 0; i <= this.commentList.length; i++) {
+              if (i === this.indexEdit) {
                 this.commentList[i].content = form.value.content;
               }
             }
-          }
-        )
-      }
-    )
+          });
+      });
   }
 
   addNewComment(value) {
     this.newComment.emit(value);
     this.getCommentList();
   }
-
-  isExpanded = false;
 
   expandItems() {
     this.isExpanded = true;

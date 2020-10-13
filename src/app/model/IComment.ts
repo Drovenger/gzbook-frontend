@@ -8,5 +8,5 @@ export interface IComment {
   commentTime: string;
   commenterName: string;
   commenterAvatar: string;
-  edited: number
+  edited: number;
 }
