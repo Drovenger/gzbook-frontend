@@ -1,5 +1,5 @@
 <div class="comet-avatar" *ngIf="user">
-  <img style="height: 2.8vw; width: 2.8vw; object-fit: cover" src="{{user.userAvatar}}" alt="">
+  <img style="height: 2.8vw; width: 2.8vw; object-fit: cover" src="{{user.avatarUrl}}" alt="">
 </div>
 <div class="post-comt-box">
   <form [formGroup]="addCommentForm" (ngSubmit)="addComment()">
