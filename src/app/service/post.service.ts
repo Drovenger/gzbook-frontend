@@ -32,8 +32,8 @@ export class PostService {
     return this.http.delete(this.API_URL + 'delete/' + postId);
   }
 
-  updatePost(postId: number, post) {
-    return this.http.put(this.API_URL + 'update/' + postId, post);
+  updatePost(post) {
+    return this.http.put(this.API_URL + 'update', post);
   }
 
   searchPostByIdAndTextPost(id: number, textPost: string) {

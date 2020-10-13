@@ -23,8 +23,7 @@ import { UserInfoComponent } from './user-info/user-info.component';
 import { EditUserInfoComponent } from './edit-user-info/edit-user-info.component';
 import { EditComponent } from './edit/edit.component';
 import { EditPasswordComponent } from './edit-password/edit-password.component';
-import { UserWallComponent } from './user-wall/user-wall.component';
-import { CoverPhotoComponent } from './cover-photo/cover-photo.component';
+import { StatusEditComponent } from './status-edit/status-edit.component';
 
 
 @NgModule({
@@ -43,8 +42,7 @@ import { CoverPhotoComponent } from './cover-photo/cover-photo.component';
     EditUserInfoComponent,
     EditComponent,
     EditPasswordComponent,
-    UserWallComponent,
-    CoverPhotoComponent
+    StatusEditComponent
   ],
   imports: [
     BrowserModule,
