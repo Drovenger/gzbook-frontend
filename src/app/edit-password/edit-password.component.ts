@@ -3,6 +3,7 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/form
 import {UserService} from '../service/user.service';
 import {Router} from '@angular/router';
 import {TokenStorageService} from '../service/token-storage.service';
+import swal from 'sweetalert';
 
 function comparePassword(c: AbstractControl) {
   const v = c.value;
@@ -54,8 +55,7 @@ export class EditPasswordComponent implements OnInit {
           icon: 'success',
           title: 'Mật khẩu của bạn đã được thay đổi!'
         });
-      }
-    );
+      });
     this.router.navigate(['/']);
   }
 }

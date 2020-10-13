@@ -57,7 +57,7 @@ export class StatusComponent implements OnInit {
   showPost() {
     let id: number;
     if (this.actRoute.snapshot.params.id == null || !window.location.href.includes('status')) {
-      id = this.post.postId;
+      id = this.post.id;
     } else {
       id = parseInt(this.actRoute.snapshot.params.id);
     }
@@ -69,7 +69,7 @@ export class StatusComponent implements OnInit {
             let user = res as IUser;
             this.post.posterName = user.username;
             this.post.posterAvatar = user.avatarUrl;
-            this.commentService.getCommentByPostId(this.post.postId).subscribe(
+            this.commentService.getCommentByPostId(this.post.id).subscribe(
               commentList => {
                 this.post.commentList = commentList as IComment[];
               }
@@ -85,17 +85,14 @@ export class StatusComponent implements OnInit {
                   let user = res as IUser;
                   this.sharedPost.posterName = user.username;
                   this.sharedPost.posterAvatar = user.avatarUrl;
-                }
-              );
-            }
-          );
+                });
+            });
         }
-      }
-    );
+      });
   }
 
   likeAPost() {
-    this.likePost.postId = this.post.postId;
+    this.likePost.postId = this.post.id;
     this.likePost.likerId = this.tokenStorage.getUser().id;
     this.likePostService.newLikePost(this.likePost).subscribe(
       res => {
@@ -110,7 +107,7 @@ export class StatusComponent implements OnInit {
       res => {
         this.likeList = res as ILikePost[];
         for (let i = 0; i < this.likeList.length; i++) {
-          if (this.likeList[i].likerId === this.tokenStorage.getUser().id && this.likeList[i].postId === this.post.postId) {
+          if (this.likeList[i].likerId === this.tokenStorage.getUser().id && this.likeList[i].postId === this.post.id) {
             this.likePostService.unLikeAPost(this.likeList[i].id).subscribe();
             this.post.postLike--;
             this.liked = false;
@@ -127,7 +124,7 @@ export class StatusComponent implements OnInit {
         this.likeList = res as ILikePost[];
         for (let i = 0; i < this.likeList.length; i++) {
           if (this.actRoute.snapshot.params.id == null || !window.location.href.includes('status')) {
-            if (this.likeList[i].postId === this.post.postId) {
+            if (this.likeList[i].postId === this.post.id) {
               if (this.likeList[i].likerId === this.tokenStorage.getUser().id) {
                 this.liked = true;
               }
@@ -140,11 +137,10 @@ export class StatusComponent implements OnInit {
             }
           }
         }
-      }
-    );
+      });
   }
 
-  deletePost(postId: any) {
+  deletePost(postId: number) {
     swal({
       title: 'Xóa bài viết?',
       text: 'Bạn có chắc chắn muốn xóa bài viết này không?',
@@ -153,6 +149,7 @@ export class StatusComponent implements OnInit {
     })
       .then(willDelete => {
           if (willDelete) {
+            console.log(postId);
             this.commentService.getCommentByPostId(postId).subscribe(
               commentList => {
                 let comments = commentList as IComment[];
@@ -196,29 +193,27 @@ export class StatusComponent implements OnInit {
       dangerMode: false,
     })
       .then(share => {
-          if (share) {
-            this.postService.creatNewPost({
-              userId: this.tokenStorage.getUser().id,
-              textPost: '',
-              imagePost: '',
-              videoPost: '',
-              linkPost: postId,
-              postDate: '',
-              postLike: 0,
-              postDislike: 0,
-              status: 3
-            }).subscribe(
-              res => {
-                this.sharePostEvent.emit(postId);
-              }
-            );
-            swal({
-              icon: 'success',
-              title: 'Bài viết này đã được chia sẻ!'
-            });
-          }
+        if (share) {
+          this.postService.creatNewPost({
+            userId: this.tokenStorage.getUser().id,
+            textPost: '',
+            imagePost: '',
+            videoPost: '',
+            linkPost: postId,
+            postDate: '',
+            postLike: 0,
+            postDislike: 0,
+            status: 3
+          }).subscribe(
+            res => {
+              this.sharePostEvent.emit(postId);
+            }
+          );
+          swal({
+            icon: 'success',
+            title: 'Bài viết này đã được chia sẻ!'
+          });
         }
-      );
+      });
   }
-
 }

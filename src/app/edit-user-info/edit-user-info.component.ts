@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TokenStorageService} from '../service/token-storage.service';
 import {IUser} from '../model/IUser';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-edit-user-info',
@@ -67,8 +68,6 @@ export class EditUserInfoComponent implements OnInit {
       }
     );
     this.router.navigate(['/']);
-  )
-    ;
   }
 
   get email() {
