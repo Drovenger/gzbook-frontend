@@ -31,7 +31,7 @@ export class CommentComponent implements OnInit {
     this.getUser();
     this.checkFriend();
     this.addCommentForm = this.fb.group({
-      commenterId: this.tokenStorage.getUser().id,
+      userId: this.tokenStorage.getUser().id,
       postId: this.postId,
       content: '',
       commentLike: '',
@@ -52,13 +52,13 @@ export class CommentComponent implements OnInit {
     } else{ alert("You are not friend!");
     }
     this.addCommentForm.reset({
-      commenterId: this.tokenStorage.getUser().id,
+      userId: this.tokenStorage.getUser().id,
       postId: this.postId,
       content: '',
       commentLike: '',
       commentDislike: '',
       commentTime: ''
-    });
+    })
   }
 
   getUser() {

@@ -1,6 +1,6 @@
 export interface IComment {
   commentId: number;
-  commenterId: number;
+  userId: number;
   postId: number;
   content: string;
   commentLike: number;

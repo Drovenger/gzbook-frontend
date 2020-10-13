@@ -1,24 +1,24 @@
 <div class="coment-area" *ngIf="commentList && userLogin && post">
   <ul class="we-comet">
     <li class="row" *ngFor="let comment of commentList | slice:0:2; let i = index">
-      <div class="comet-avatar col col-lg-2 col-md-2 col-xl-2 col-sm-2" [routerLink]="'/userInfor/'+ comment.commenterId">
+      <div class="comet-avatar col col-lg-2 col-md-2 col-xl-2 col-sm-2" [routerLink]="'/userInfor/'+ comment.userId">
         <img style="height: 2.5vw; width: 2.5vw; object-fit: cover" src="{{comment.commenterAvatar}}" alt="">
       </div>
       <div class="we-comment">
         <div class="coment-head w-100" style="position: relative">
-          <h5><a [routerLink]="'/userInfor/'+ comment.commenterId" title="">{{comment.commenterName}}</a></h5>
+          <h5><a [routerLink]="'/userInfor/'+ comment.userId" title="">{{comment.commenterName}}</a></h5>
           <span>{{comment.commentTime}}</span>
           <p>{{comment.content}}</p>
           <div style="position: absolute; bottom: -10px; right: 0">
             <app-comment-like [comment] = comment></app-comment-like>
             <a class="btn fa fa-male" data-toggle="modal" title="Peoples like this post" [attr.data-target]="'#showCommentLikerList' + comment.commentId"></a>
-            <ng-template [ngIf]="userLogin.id==comment.commenterId" >
+            <ng-template [ngIf]="userLogin.id==comment.userId" >
               <a class="btn fa fa-edit align-self-end" data-toggle="modal" title="Edit" [attr.data-target]="'#editComment' + comment.commentId"></a>
             </ng-template>
 <!--            <ng-template [ngIf]="comment.edited === 1" >-->
 <!--              <a class="btn fa fa-history" data-toggle="modal" title="Edit log" [attr.data-target]="'#showEditLog' + comment.commentId"></a>-->
 <!--            </ng-template>-->
-            <ng-template [ngIf]="userLogin.id==comment.commenterId||userLogin.id==post.userId" >
+            <ng-template [ngIf]="userLogin.id==comment.userId||userLogin.id==post.userId" >
               <a class="btn fa fa-trash align-self-end" title="Delete" (click)="deleteComment(comment.commentId, i)"></a>
             </ng-template>
           </div>
@@ -37,7 +37,7 @@
     <ng-container *ngIf="isExpanded">
       <ng-container *ngFor="let comment of commentList; let i = index">
         <li class="row" *ngIf="i >= 2">
-          <div class="comet-avatar col col-lg-2 col-md-2 col-xl-2 col-sm-2" [routerLink]="'/userInfor/'+ comment.commenterId">
+          <div class="comet-avatar col col-lg-2 col-md-2 col-xl-2 col-sm-2" [routerLink]="'/userInfor/'+ comment.userId">
             <img style="height: 2.5vw; width: 2.5vw; object-fit: cover" src="{{comment.commenterAvatar}}" alt="">
           </div>
           <div class="we-comment">
@@ -48,13 +48,13 @@
               <div style="position: absolute; bottom: -10px; right: 0">
                 <app-comment-like [comment] = comment></app-comment-like>
                 <a class="btn fa fa-male" data-toggle="modal" title="Peoples like this post" [attr.data-target]="'#showCommentLikerList' + comment.commentId"></a>
-                <ng-template [ngIf]="userLogin.id==comment.commenterId" >
+                <ng-template [ngIf]="userLogin.id==comment.userId" >
                   <a class="btn fa fa-edit align-self-end" data-toggle="modal" title="Edit" [attr.data-target]="'#editComment' + comment.commentId"></a>
                 </ng-template>
 <!--                <ng-template [ngIf]="comment.edited === 1" >-->
 <!--                  <a class="btn fa fa-history" data-toggle="modal" title="Edit log" [attr.data-target]="'#showEditLog' + comment.commentId"></a>-->
 <!--                </ng-template>-->
-                <ng-template [ngIf]="userLogin.id==comment.commenterId||userLogin.id==post.userId" >
+                <ng-template [ngIf]="userLogin.id==comment.userId||userLogin.id==post.userId" >
                   <a class="btn fa fa-trash align-self-end" title="Delete" (click)="deleteComment(comment.commentId, i)"></a>
                 </ng-template>
               </div>

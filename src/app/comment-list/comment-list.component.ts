@@ -47,7 +47,7 @@ export class CommentListComponent implements OnInit {
       commentList => {
         this.commentList = <IComment[]> commentList;
         for (let i = 0; i < this.commentList.length; i++) {
-          this.userService.findUserById(this.commentList[i].commenterId).subscribe(
+          this.userService.findUserById(this.commentList[i].userId).subscribe(
             res => {
               let commenter = <IUser> res;
               this.commentList[i].commenterName = commenter.username;
