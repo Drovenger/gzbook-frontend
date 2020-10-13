@@ -41,7 +41,7 @@ export class UsersService {
   }
 
   findUserByUsername(username: string) {
-    return this.http.get(this.userUrl + '/findUserByName/' + username).pipe(
+    return this.http.get(this.userUrl + '/findUserByName?name=' + username).pipe(
       tap(
         users => JSON.stringify(users)),
       catchError(err => of([]))
