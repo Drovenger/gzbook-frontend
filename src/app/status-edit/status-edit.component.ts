@@ -1,12 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {AngularFireStorage} from '@angular/fire/storage';
+import {ActivatedRoute, Router} from '@angular/router';
+import {CommentService} from '../service/comment.service';
+import {IPost} from '../model/IPost';
 import {UserService} from '../service/user.service';
 import {PostService} from '../service/post.service';
-import {CommentService} from '../service/comment.service';
-import {ActivatedRoute} from '@angular/router';
-import {AngularFireStorage} from '@angular/fire/storage';
-import {IPost} from '../model/IPost';
-import {NgForm} from '@angular/forms';
 import {finalize} from 'rxjs/operators';
+import {NgForm} from '@angular/forms';
+import swal from 'sweetalert';
+
 
 @Component({
   selector: 'app-status-edit',
@@ -15,22 +17,31 @@ import {finalize} from 'rxjs/operators';
 })
 export class StatusEditComponent implements OnInit {
 
+  @Input() post: IPost;
+
   constructor(private userService: UserService,
               private postService: PostService,
               private commentService: CommentService,
               private actRoute: ActivatedRoute,
-              private storage: AngularFireStorage) { }
+              private storage: AngularFireStorage,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
 
   }
 
-  @Input() post: IPost;
 
   onSubmit(form: NgForm) {
     this.post.textPost = form.value.textPost;
     this.post.imagePost = form.value.imagePost;
-    this.postService.updatePost(this.post.userId, this.post).subscribe();
+    this.postService.updatePost(this.post).subscribe(res => {
+      swal({
+        icon: 'success',
+        title: 'Nội dung đã được thay đổi!'
+      });
+    });
+    // this.router.navigateByUrl('/');
   }
 
   deleteImage() {
@@ -55,4 +66,3 @@ export class StatusEditComponent implements OnInit {
     console.log(this.post.status);
   }
 }
-
