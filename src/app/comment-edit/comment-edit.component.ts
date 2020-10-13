@@ -32,7 +32,7 @@ export class CommentEditComponent implements OnInit {
       res => {
         swal({
           icon: 'success',
-          title: 'Comment của bạn đã được thay đổi!'
+          title: 'Bình luận của bạn đã được thay đổi!'
         });
       }
   )
