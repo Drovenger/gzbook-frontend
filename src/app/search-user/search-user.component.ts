@@ -11,7 +11,7 @@ import {IUser} from '../model/IUser';
 export class SearchUserComponent implements OnInit {
 
   users: IUser[];
-  sumUsers: number = 0;
+  sumUsers = 0;
 
   constructor(private userService: UsersService) {
   }
@@ -20,21 +20,19 @@ export class SearchUserComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-
-
     if (form.value.username === '') {
       this.userService.findAllUser().subscribe(
         response => {
-          this.users = <IUser[]> response,
-            this.sumUsers = this.users.length;
+          this.users = response as IUser[];
+          this.sumUsers = this.users.length;
         },
         error => console.error(error)
       );
     } else {
       this.userService.findUserByUsername(form.value.username).subscribe(
         response => {
-          this.users = <IUser[]> response,
-            this.sumUsers = this.users.length;
+          this.users = response as IUser[];
+          this.sumUsers = this.users.length;
         },
         error => console.error(error)
       );

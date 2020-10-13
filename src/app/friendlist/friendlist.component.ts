@@ -80,7 +80,7 @@ export class FriendlistComponent implements OnInit {
         this.userService.getUser().subscribe(
           response => {
             this.userRelated = response as IUser;
-            this.friendService.unFriend(this.userRelated.id, statusId, {
+            this.friendService.unfriend(this.userRelated.id, statusId, {
               'id': this.user.id,
               'userName': null,
               'email': null,
