@@ -60,12 +60,13 @@ export class EditUserInfoComponent implements OnInit {
     let data = this.userEditForm.value;
     this.userService.editUser(this.tokenStorage.getUser().id, data).subscribe(
       res => {
-        swal({
+        swals({
           icon: 'success',
-          title: 'Your information has changed!'
+          title: 'Thông tin cá nhân của bạn đã được thay đổi!'
         });
       }
     );
+    this.router.navigate(['/']);
   }
 
   get email() {
