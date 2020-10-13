@@ -2,8 +2,8 @@
   <div class="user-post">
     <div class="friend-info">
       <figure>
-<!--        <a [routerLink]="'/userInfor/'+ post.posterId"><img style="height: 3.5vw; width: 3.5vw; object-fit: cover"-->
-<!--                                                            src="{{post.posterAvatar}}" alt=""></a>-->
+        <a [routerLink]="'/userInfor/'+ post.userId"><img style="height: 3.5vw; width: 3.5vw; object-fit: cover"
+                                                            src="{{post.posterAvatar}}" alt=""></a>
       </figure>
       <div class="friend-name">
         <ins style="text-transform:capitalize"><a [routerLink]="'/userInfor/'+ post.userId"
@@ -26,8 +26,8 @@
                   <div class="detail">
                     <div class="friend-info">
                       <figure>
-<!--                        <img style="height: 2.3vw; width: 2.3vw; object-fit: cover" src="{{sharedPost.posterAvatar}}"-->
-<!--                             alt="">-->
+                        <img style="height: 2.3vw; width: 2.3vw; object-fit: cover" src="{{sharedPost.posterAvatar}}"
+                             alt="">
                       </figure>
                       <div class="friend-name">
                         <ins style="text-transform:capitalize"><a href="#" title="">{{sharedPost.posterName}}</a></ins>
@@ -42,12 +42,12 @@
           </div>
           <div class="we-video-info">
             <ul>
-              <li (click)="likeAPost()" *ngIf="!liked">
-                <span class="like" data-toggle="tooltip" title="Like"><i class="ti-heart"></i><ins>{{post.postLike}}</ins></span>
-              </li>
-              <li (click)="unLikeAPost()" *ngIf="liked">
-                <span class="like" data-toggle="tooltip" title="UnLike"><i class="ti-heart" style="color: red"></i><ins>{{post.postLike}}</ins></span>
-              </li>
+<!--              <li (click)="likeAPost()" *ngIf="!liked">-->
+<!--                <span class="like" data-toggle="tooltip" title="Like"><i class="ti-heart"></i><ins>{{post.postLike}}</ins></span>-->
+<!--&lt;!&ndash;              </li>&ndash;&gt;-->
+<!--              <li (click)="unLikeAPost()" *ngIf="liked">-->
+<!--                <span class="like" data-toggle="tooltip" title="UnLike"><i class="ti-heart" style="color: red"></i><ins>{{post.postLike}}</ins></span>-->
+<!--              </li>-->
               <li>
               <span class="comment" data-toggle="tooltip" title="Comments">
                 <i class="fa fa-comments-o"></i>
@@ -73,8 +73,8 @@
         </div>
       </div>
     </div>
-    <!--    <app-comment-list [id]="post.id" (newComment)="addNewComment($event)"-->
-    <!--                      (delComment)="delComment($event)"></app-comment-list>-->
+        <app-comment-list [postId]="post.id" (newComment)="addNewComment($event)"
+                          (delComment)="delComment($event)"></app-comment-list>
   </div>
     <div class="modal fade" [attr.id]="'modal' + post.id" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="post">

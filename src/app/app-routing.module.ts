@@ -2,6 +2,8 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {LoginAndRegisterComponent} from './login-and-register/login-and-register.component';
+import {CommentComponent} from './comment/comment.component';
+import {CommentListComponent} from './comment-list/comment-list.component';
 import {SearchUserComponent} from './search-user/search-user.component';
 import {FriendlistComponent} from './friendlist/friendlist.component';
 import {UserInfoComponent} from './user-info/user-info.component';
@@ -27,6 +29,10 @@ const routes: Routes = [
     path: 'list',
     component: FriendlistComponent
   },
+  {
+  path: 'commentList',
+  component: CommentListComponent}
+  ,
   {
     path: 'user/:id',
     component: UserInfoComponent,
