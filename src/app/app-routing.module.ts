@@ -9,6 +9,7 @@ import {FriendlistComponent} from './friendlist/friendlist.component';
 import {UserInfoComponent} from './user-info/user-info.component';
 import {EditUserInfoComponent} from './edit-user-info/edit-user-info.component';
 import {EditPasswordComponent} from './edit-password/edit-password.component';
+import {UserWallComponent} from './user-wall/user-wall.component';
 
 
 const routes: Routes = [
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'change-password',
     component: EditPasswordComponent,
+  },
+  {
+    path: 'wall/:id',
+    component: UserWallComponent
   }
 ];
 

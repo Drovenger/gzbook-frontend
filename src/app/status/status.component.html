@@ -35,7 +35,6 @@
                       </div>
                     </div>
                     <h5 class="m-3">{{sharedPost.textPost}}</h5>
-                    {{post.id}}
                   </div>
                 </div>
               </div>
@@ -60,8 +59,7 @@
               </li>
               <ng-template [ngIf]="userLogin.id==post.userId">
                 <li data-toggle="tooltip" title="Edit">
-                  <span data-toggle="modal" [attr.data-target]="'#modal' + post.id"><i
-                    class="fa fa-pencil-square-o"></i></span>
+                  <span data-toggle="modal" [attr.data-target]="'#modal' + post.id"><i class="fa fa-pencil-square-o"></i></span>
                 </li>
                 <li data-toggle="tooltip" title="Delete post">
                   <span><i class="fa fa-trash" (click)="deletePost(post.id)"></i></span>
@@ -78,10 +76,10 @@
         <app-comment-list [postId]="post.id" (newComment)="addNewComment($event)"
                           (delComment)="delComment($event)"></app-comment-list>
   </div>
-  <!--  <div class="modal fade" [attr.id]="'modal' + post.id" tabindex="-1" role="dialog"-->
-  <!--       aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="post">-->
-  <!--    <app-status-edit [post]="post"></app-status-edit>-->
-  <!--  </div>-->
+    <div class="modal fade" [attr.id]="'modal' + post.id" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="post">
+      <app-status-edit [post]="post"></app-status-edit>
+    </div>
 
   <!--  <div class="modal fade" [attr.id]="'showLikerList' + post.id" tabindex="-1" role="dialog"-->
   <!--       aria-labelledby="exampleModalLabel" aria-hidden="true">-->

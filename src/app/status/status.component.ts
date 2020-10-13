@@ -85,13 +85,10 @@ export class StatusComponent implements OnInit {
                   let user = res as IUser;
                   this.sharedPost.posterName = user.username;
                   this.sharedPost.posterAvatar = user.avatarUrl;
-                }
-              );
-            }
-          );
+                });
+            });
         }
-      }
-    );
+      });
   }
 
   // likeAPost() {
@@ -197,29 +194,28 @@ export class StatusComponent implements OnInit {
       dangerMode: false,
     })
       .then(share => {
-          if (share) {
-            this.postService.creatNewPost({
-              userId: this.tokenStorage.getUser().id,
-              textPost: '',
-              imagePost: '',
-              videoPost: '',
-              linkPost: postId,
-              postDate: '',
-              postLike: 0,
-              postDislike: 0,
-              status: 3
-            }).subscribe(
-              res => {
-                this.sharePostEvent.emit(postId);
-              }
-            );
-            swal({
-              icon: 'success',
-              title: 'Bài viết này đã được chia sẻ!'
-            });
-          }
+        if (share) {
+          this.postService.creatNewPost({
+            userId: this.tokenStorage.getUser().id,
+            textPost: '',
+            imagePost: '',
+            videoPost: '',
+            linkPost: postId,
+            postDate: '',
+            postLike: 0,
+            postDislike: 0,
+            status: 3
+          }).subscribe(
+            res => {
+              this.sharePostEvent.emit(postId);
+            }
+          );
+          swal({
+            icon: 'success',
+            title: 'Bài viết này đã được chia sẻ!'
+          });
         }
-      );
+      });
   }
 
 }

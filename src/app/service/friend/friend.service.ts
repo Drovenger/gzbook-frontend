@@ -47,7 +47,7 @@ export class FriendService {
     );
   }
 
-  unFriend(relatedId: number, statusId: number, user: any) {
+  unfriend(relatedId: number, statusId: number, user: any) {
     return this.http.put(this.friendUrl + '/unfriend/' + relatedId + '/' + statusId, user).pipe(
       tap(
         receivedList => JSON.stringify(receivedList)),
