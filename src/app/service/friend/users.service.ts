@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {catchError, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
@@ -10,7 +10,8 @@ import {environment} from '../../../environments/environment';
 })
 export class UsersService {
 
-  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) { }
+  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {
+  }
 
   private userUrl = environment.URL + 'user';
 
@@ -23,20 +24,20 @@ export class UsersService {
       tap(
         user => JSON.stringify(user)),
       catchError(err => of([]))
-    )
+    );
   }
 
-  editUser(id: number, user: any):Observable<any> {
-    return this.http.put(this.userUrl + '/update/' + id, user)
+  editUser(id: number, user: any): Observable<any> {
+    return this.http.put(this.userUrl + '/update/' + id, user);
   }
 
   combinePassword(id: number, password: JSON) {
-    return this.http.post(this.userUrl + '/combinePassword/' + id, password)
+    return this.http.post(this.userUrl + '/combinePassword/' + id, password);
   }
 
   changePassword(id: number, newPassword: JSON) {
     return this.http.post(this.userUrl + '/changePassword/' + id, newPassword,
-      { responseType: 'text' as 'json' })
+      {responseType: 'text' as 'json'});
   }
 
   findUserByUsername(username: string) {
@@ -44,7 +45,7 @@ export class UsersService {
       tap(
         users => JSON.stringify(users)),
       catchError(err => of([]))
-    )
+    );
   }
 
   findAllUser() {
@@ -52,10 +53,10 @@ export class UsersService {
       tap(
         users => JSON.stringify(users)),
       catchError(err => of([]))
-    )
+    );
   }
 
   checkEmailExist(email: string) {
-    return this.http.post(this.userUrl+ '/exists', email)
+    return this.http.post(this.userUrl + '/exists', email);
   }
 }
