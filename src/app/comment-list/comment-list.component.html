@@ -9,24 +9,24 @@
           <h5><a [routerLink]="'/userInfor/'+ comment.commenterId" title="">{{comment.commenterName}}</a></h5>
           <span>{{comment.commentTime}}</span>
           <p>{{comment.content}}</p>
-<!--          <div style="position: absolute; bottom: -10px; right: 0">-->
-<!--            <app-comment-like [comment] = comment></app-comment-like>-->
-<!--            <a class="btn fa fa-male" data-toggle="modal" title="Peoples like this post" [attr.data-target]="'#showCommentLikerList' + comment.commentId"></a>-->
-<!--            <ng-template [ngIf]="userLogin.userId==comment.commenterId" >-->
-<!--              <a class="btn fa fa-edit align-self-end" data-toggle="modal" title="Edit" [attr.data-target]="'#editComment' + comment.commentId"></a>-->
-<!--            </ng-template>-->
+          <div style="position: absolute; bottom: -10px; right: 0">
+            <app-comment-like [comment] = comment></app-comment-like>
+            <a class="btn fa fa-male" data-toggle="modal" title="Peoples like this post" [attr.data-target]="'#showCommentLikerList' + comment.commentId"></a>
+            <ng-template [ngIf]="userLogin.id==comment.commenterId" >
+              <a class="btn fa fa-edit align-self-end" data-toggle="modal" title="Edit" [attr.data-target]="'#editComment' + comment.commentId"></a>
+            </ng-template>
 <!--            <ng-template [ngIf]="comment.edited === 1" >-->
 <!--              <a class="btn fa fa-history" data-toggle="modal" title="Edit log" [attr.data-target]="'#showEditLog' + comment.commentId"></a>-->
 <!--            </ng-template>-->
-<!--            <ng-template [ngIf]="userLogin.userId==comment.commenterId||userLogin.userId==post.posterId" >-->
-<!--              <a class="btn fa fa-trash align-self-end" title="Delete" (click)="deleteComment(comment.commentId, i)"></a>-->
-<!--            </ng-template>-->
-<!--          </div>-->
+            <ng-template [ngIf]="userLogin.id==comment.commenterId||userLogin.id==post.userId" >
+              <a class="btn fa fa-trash align-self-end" title="Delete" (click)="deleteComment(comment.commentId, i)"></a>
+            </ng-template>
+          </div>
         </div>
       </div>
-<!--      <div class="modal fade" [attr.id]="'editComment' + comment.commentId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--        <app-comment-edit [comment]="comment"></app-comment-edit>-->
-<!--      </div>-->
+      <div class="modal fade" [attr.id]="'editComment' + comment.commentId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <app-comment-edit [comment]="comment"></app-comment-edit>
+      </div>
 <!--      <div class="modal fade" [attr.id]="'showCommentLikerList' + comment.commentId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
 <!--        <app-comment-liker-list [commentId]="comment.commentId"></app-comment-liker-list>-->
 <!--      </div>-->
@@ -45,24 +45,24 @@
               <h5><a href="#" title="">{{comment.commenterName}}</a></h5>
               <span>{{comment.commentTime}}</span>
               <p>{{comment.content}}</p>
-<!--              <div style="position: absolute; bottom: -10px; right: 0">-->
-<!--                <app-comment-like [comment] = comment></app-comment-like>-->
-<!--                <a class="btn fa fa-male" data-toggle="modal" title="Peoples like this post" [attr.data-target]="'#showCommentLikerList' + comment.commentId"></a>-->
-<!--                <ng-template [ngIf]="userLogin.userId==comment.commenterId" >-->
-<!--                  <a class="btn fa fa-edit align-self-end" data-toggle="modal" title="Edit" [attr.data-target]="'#editComment' + comment.commentId"></a>-->
-<!--                </ng-template>-->
+              <div style="position: absolute; bottom: -10px; right: 0">
+                <app-comment-like [comment] = comment></app-comment-like>
+                <a class="btn fa fa-male" data-toggle="modal" title="Peoples like this post" [attr.data-target]="'#showCommentLikerList' + comment.commentId"></a>
+                <ng-template [ngIf]="userLogin.id==comment.commenterId" >
+                  <a class="btn fa fa-edit align-self-end" data-toggle="modal" title="Edit" [attr.data-target]="'#editComment' + comment.commentId"></a>
+                </ng-template>
 <!--                <ng-template [ngIf]="comment.edited === 1" >-->
 <!--                  <a class="btn fa fa-history" data-toggle="modal" title="Edit log" [attr.data-target]="'#showEditLog' + comment.commentId"></a>-->
 <!--                </ng-template>-->
-<!--                <ng-template [ngIf]="userLogin.userId==comment.commenterId||userLogin.userId==post.posterId" >-->
-<!--                  <a class="btn fa fa-trash align-self-end" title="Delete" (click)="deleteComment(comment.commentId, i)"></a>-->
-<!--                </ng-template>-->
-<!--              </div>-->
+                <ng-template [ngIf]="userLogin.id==comment.commenterId||userLogin.id==post.userId" >
+                  <a class="btn fa fa-trash align-self-end" title="Delete" (click)="deleteComment(comment.commentId, i)"></a>
+                </ng-template>
+              </div>
             </div>
           </div>
-<!--          <div class="modal fade" [attr.id]="'editComment' + comment.commentId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--            <app-comment-edit [comment]="comment"></app-comment-edit>-->
-<!--          </div>-->
+          <div class="modal fade" [attr.id]="'editComment' + comment.commentId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <app-comment-edit [comment]="comment"></app-comment-edit>
+          </div>
 <!--          <div class="modal fade" [attr.id]="'showCommentLikerList' + comment.commentId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
 <!--            <app-comment-liker-list [commentId]="comment.commentId"></app-comment-liker-list>-->
 <!--          </div>-->
@@ -83,3 +83,5 @@
     </li>
   </ul>
 </div>
+
+

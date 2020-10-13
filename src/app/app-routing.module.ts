@@ -29,13 +29,9 @@ const routes: Routes = [
     component: FriendlistComponent
   },
   {
-    path: 'comment',
-    component: CommentComponent
-  },
-  {
-    path: 'comment',
-    component: CommentListComponent
-  },
+  path: 'commentList',
+  component: CommentListComponent}
+  ,
   {
     path: 'user/:id',
     component: UserInfoComponent,
