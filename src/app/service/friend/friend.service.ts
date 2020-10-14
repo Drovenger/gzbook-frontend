@@ -23,6 +23,14 @@ export class FriendService {
     );
   }
 
+  getMutualFriendList(idUser: number, idLogin: number) {
+    return this.http.get(this.friendUrl + '/mutualFriends/' + idUser + '/' + idLogin).pipe(
+      tap(
+        receivedList => JSON.stringify(receivedList)),
+      catchError(err => of([]))
+    );
+  }
+
   getPengdingList(userId: number) {
     return this.http.get(this.friendUrl + '/listPending/' + userId).pipe(
       tap(
