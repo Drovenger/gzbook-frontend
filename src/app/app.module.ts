@@ -27,6 +27,8 @@ import {EditComponent} from './edit/edit.component';
 import {EditPasswordComponent} from './edit-password/edit-password.component';
 import {CommentEditComponent} from './comment-edit/comment-edit.component';
 import {StatusEditComponent} from './status-edit/status-edit.component';
+import {UserWallComponent} from './user-wall/user-wall.component';
+import {CoverPhotoComponent} from './cover-photo/cover-photo.component';
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import {StatusEditComponent} from './status-edit/status-edit.component';
     EditComponent,
     EditPasswordComponent,
     CommentEditComponent,
-    StatusEditComponent
+    StatusEditComponent,
+    UserWallComponent,
+    CoverPhotoComponent
   ],
   imports: [
     BrowserModule,
