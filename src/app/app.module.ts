@@ -29,6 +29,7 @@ import {CommentEditComponent} from './comment-edit/comment-edit.component';
 import {StatusEditComponent} from './status-edit/status-edit.component';
 import {UserWallComponent} from './user-wall/user-wall.component';
 import {CoverPhotoComponent} from './cover-photo/cover-photo.component';
+import { MutualFriendsComponent } from './mutual-friends/mutual-friends.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import {CoverPhotoComponent} from './cover-photo/cover-photo.component';
     CommentEditComponent,
     StatusEditComponent,
     UserWallComponent,
-    CoverPhotoComponent
+    CoverPhotoComponent,
+    MutualFriendsComponent
   ],
   imports: [
     BrowserModule,
