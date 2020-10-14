@@ -71,11 +71,9 @@ export class LoginAndRegisterComponent implements OnInit {
       err => {
         this.errorMessage2 = err.error.message;
         this.isSignUpFailed = true;
-      }
-    );
+      });
     this.onSubmit();
   }
 
   get f() { return this.form.controls; }
-
 }

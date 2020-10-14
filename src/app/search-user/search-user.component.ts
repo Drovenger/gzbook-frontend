@@ -40,8 +40,6 @@ export class SearchUserComponent implements OnInit {
     form.reset(
       {
         username: ''
-      }
-    );
+      });
   }
-
 }

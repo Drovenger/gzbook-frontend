@@ -26,8 +26,7 @@ export class HomeComponent implements OnInit {
     this.userService.getUser().subscribe(
       res => {
         this.userLogin = res as IUser;
-      }
-    );
+      });
   }
 
   getAllPost() {

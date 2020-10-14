@@ -67,11 +67,9 @@ export class NewPostComponent implements OnInit {
             postLike: 0,
             postDislike: 0,
             status: 3
-          }
-        );
+          });
         this.downloadURL = '';
-      }
-    );
+      });
   }
 
 
@@ -86,9 +84,7 @@ export class NewPostComponent implements OnInit {
         url => {
           this.downloadURL = url;
           this.creatPostForm.value.imagePost = url;
-        }))
-    )
-      .subscribe();
+        }))).subscribe();
   }
 
   cancelPostImg() {
