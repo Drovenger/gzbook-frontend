@@ -20,7 +20,6 @@ export class CoverPhotoComponent implements OnInit {
   @Input() relatingId: number;
   @Input() relatedId: number;
 
-
   constructor(private uploadService: UploadFileService,
               private userService: UserService,
               private router: Router,
@@ -73,8 +72,7 @@ export class CoverPhotoComponent implements OnInit {
           } else {
             this.updateAvatar(url);
           }
-        }))
-    )
+        })))
       .subscribe();
   }
 

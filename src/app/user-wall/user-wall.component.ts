@@ -79,14 +79,12 @@ export class UserWallComponent implements OnInit {
       this.postService.searchPostByIdAndTextPost(this.idUser, form.value.postname).subscribe(
         postList => {
           this.allPost = postList as IPost[];
-        }
-      );
+        });
     }
     form.reset(
       {
         postname: ''
-      }
-    );
+      });
   }
 
   addNewPost(value) {
