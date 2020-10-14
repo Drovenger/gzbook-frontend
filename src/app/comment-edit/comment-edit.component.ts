@@ -23,7 +23,7 @@ export class CommentEditComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @Input() comment: IComment
+  @Input() comment: IComment;
 
   editComment(form: NgForm) {
     this.comment.content = form.value.content;

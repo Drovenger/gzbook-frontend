@@ -1,12 +1,12 @@
 <div class="coment-area" *ngIf="commentList && userLogin && post">
   <ul class="we-comet">
     <li class="row" *ngFor="let comment of commentList | slice:0:2; let i = index">
-      <div class="comet-avatar col col-lg-2 col-md-2 col-xl-2 col-sm-2" [routerLink]="'/userInfor/'+ comment.userId">
+      <div class="comet-avatar col col-lg-2 col-md-2 col-xl-2 col-sm-2" [routerLink]="'/user/'+ comment.userId">
         <img style="height: 2.5vw; width: 2.5vw; object-fit: cover" src="{{comment.commenterAvatar}}" alt="">
       </div>
       <div class="we-comment">
         <div class="coment-head w-100" style="position: relative">
-          <h5><a [routerLink]="'/userInfor/'+ comment.userId" title="">{{comment.commenterName}}</a></h5>
+          <h5><a [routerLink]="'/user/'+ comment.userId" title="">{{comment.commenterName}}</a></h5>
           <span>{{comment.commentTime}}</span>
           <p>{{comment.content}}</p>
           <div style="position: absolute; bottom: -10px; right: 0">
@@ -37,7 +37,7 @@
     <ng-container *ngIf="isExpanded">
       <ng-container *ngFor="let comment of commentList; let i = index">
         <li class="row" *ngIf="i >= 2">
-          <div class="comet-avatar col col-lg-2 col-md-2 col-xl-2 col-sm-2" [routerLink]="'/userInfor/'+ comment.userId">
+          <div class="comet-avatar col col-lg-2 col-md-2 col-xl-2 col-sm-2" [routerLink]="'/user/'+ comment.userId">
             <img style="height: 2.5vw; width: 2.5vw; object-fit: cover" src="{{comment.commenterAvatar}}" alt="">
           </div>
           <div class="we-comment">
@@ -73,10 +73,10 @@
       </ng-container>
     </ng-container>
     <li *ngIf="commentList.length > 2 && !isExpanded">
-      <button class="btn btn-link btn-block m-0 p-0" (click)="expandItems()">Show all</button>
+      <button class="btn btn-link btn-block m-0 p-0" (click)="expandItems()">Xem thêm</button>
     </li>
     <li *ngIf="commentList.length > 2 && isExpanded">
-      <button class="btn btn-link btn-block m-0 p-0" (click)="hideItems()">Show less</button>
+      <button class="btn btn-link btn-block m-0 p-0" (click)="hideItems()">Thu gọn</button>
     </li>
     <li class="post-comment">
       <app-comment [postId]="postId" (newComment)="addNewComment($event)"></app-comment>

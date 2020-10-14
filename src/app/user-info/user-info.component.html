@@ -1,6 +1,5 @@
 <app-header></app-header>
 <!--<app-cover-photo [relatingId]="idLogin" [relatedId]="idUser"></app-cover-photo>-->
-<section *ngIf="user">
   <div class="gap gray-bg">
     <div class="container-fluid">
       <div class="row">
@@ -8,9 +7,6 @@
           <div class="row" id="page-contents">
             <div class="col-lg-3">
               <aside class="sidebar static">
-                <div>
-                  <app-edit></app-edit>
-                </div>
                 <div>
                   <app-shortcut></app-shortcut>
                 </div>
@@ -56,6 +52,9 @@
             </div><!-- centerl meta -->
             <div class="col-lg-3">
               <aside class="sidebar static">
+                <div>
+                  <app-edit></app-edit>
+                </div>
                 <!--                <app-your-page></app-your-page>-->
                 <!--                <app-friend-list [idUser]="idUser"></app-friend-list>-->
               </aside>
@@ -65,5 +64,3 @@
       </div>
     </div>
   </div>
-</section>
-<!--<app-footer></app-footer>-->
