@@ -17,7 +17,7 @@
             <input type="file" accept="image/*" (change)="uploadFile($event)">
           </label>
           <img src="{{post.imagePost}}" alt="">
-          <h6 class="m-3">Select privacy</h6>
+          <h6 class="m-3">Chọn quyền riêng tư</h6>
           <select (change)="selectStatus($event.target.value)">
             <option value="2">Công khai</option>
             <option value="1">Bạn bè</option>
