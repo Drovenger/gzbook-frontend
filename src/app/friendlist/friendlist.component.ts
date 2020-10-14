@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {IUser} from '../model/IUser';
 import {FriendService} from '../service/friend/friend.service';
 import {UsersService} from '../service/friend/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-friendlist',
@@ -73,39 +74,57 @@ export class FriendlistComponent implements OnInit {
   }
 
   unFriend(relatingId: number, statusId: number, index: number) {
-    this.userService.findUserById(relatingId).subscribe(
-      response => {
-        this.user = response as IUser;
-        this.userService.getUser().subscribe(
-          response => {
-            this.userRelated = response as IUser;
-            this.friendService.unfriend(this.userRelated.id, statusId, {
-              id: this.user.id,
-              userName: null,
-              email: null,
-              password: null,
-              gender: null,
-              dateOfBirth: null,
-              about: null,
-              address: null,
-              avatarUrl: null,
-              coverPhotoUrl: null,
-              roles: null
-            }).subscribe(
-              response => {
-                if (statusId === 3) {
-                  this.friendList.splice(index, 1);
-                  this.sumListFriend = this.sumListFriend - 1;
-                }
-              },
-              error => console.error(error)
-            );
-          },
-          error => console.error(error)
-        );
-      },
-      error => console.error(error)
-    );
+    Swal.fire({
+      icon: 'warning',
+      title: 'Bạn muốn xóa bạn bè này?',
+      text: 'Bạn sẽ không thể hoàn tác!',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Đồng ý, xóa bạn bè !'
+    })
+      .then((result) => {
+        if (result.value) {
+          Swal.fire(
+            'Đã xóa!',
+            'Bạn bè đã được xóa !',
+            'success'
+          );
+          this.userService.findUserById(relatingId).subscribe(
+            response => {
+              this.user = response as IUser;
+              this.userService.getUser().subscribe(
+                response => {
+                  this.userRelated = response as IUser;
+                  this.friendService.unfriend(this.userRelated.id, statusId, {
+                    id: this.user.id,
+                    userName: null,
+                    email: null,
+                    password: null,
+                    gender: null,
+                    dateOfBirth: null,
+                    about: null,
+                    address: null,
+                    avatarUrl: null,
+                    coverPhotoUrl: null,
+                    roles: null
+                  }).subscribe(
+                    response => {
+                      if (statusId === 3) {
+                        this.friendList.splice(index, 1);
+                        this.sumListFriend = this.sumListFriend - 1;
+                      }
+                    },
+                    error => console.error(error)
+                  );
+                },
+                error => console.error(error)
+              );
+            },
+            error => console.error(error)
+          );
+        }
+      });
   }
 
   acceptInviteFriend(relatingId: number, statusId: number, index: number) {
