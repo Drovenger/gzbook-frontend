@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UsersService} from '../service/friend/users.service';
 import {NgForm} from '@angular/forms';
 import {IUser} from '../model/IUser';
+import {TokenStorageService} from '../service/token-storage.service';
 
 @Component({
   selector: 'app-search-user',
@@ -13,7 +14,7 @@ export class SearchUserComponent implements OnInit {
   users: IUser[];
   sumUsers = 0;
 
-  constructor(private userService: UsersService) {
+  constructor(private userService: UsersService,private tokenStorage: TokenStorageService) {
   }
 
   ngOnInit(): void {
@@ -29,7 +30,7 @@ export class SearchUserComponent implements OnInit {
         error => console.error(error)
       );
     } else {
-      this.userService.findUserByUsername(form.value.username).subscribe(
+      this.userService.findUserByUsername(form.value.username,this.tokenStorage.getUser().id).subscribe(
         response => {
           this.users = response as IUser[];
           this.sumUsers = this.users.length;
