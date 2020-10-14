@@ -13,11 +13,9 @@ import {UserService} from '../service/user.service';
 export class HeaderComponent implements OnInit {
 
   user: IUser;
-
   RefreshToken = {
     token: ''
   };
-
   show = false;
 
   constructor(private userService: UserService,
@@ -48,12 +46,10 @@ export class HeaderComponent implements OnInit {
       },
       error => {
         console.log(error);
-      }
-    );
+      });
   }
 
   showMenu() {
     this.show = !this.show;
   }
-
 }

@@ -3,7 +3,7 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/form
 import {UserService} from '../service/user.service';
 import {Router} from '@angular/router';
 import {TokenStorageService} from '../service/token-storage.service';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 function comparePassword(c: AbstractControl) {
   const v = c.value;
@@ -51,7 +51,7 @@ export class EditPasswordComponent implements OnInit {
   changePassword() {
     this.userService.changePassword(this.tokenStorage.getUser().id, this.changePasswordForm.value.newPassword).subscribe(
       res => {
-        swal({
+        Swal.fire({
           icon: 'success',
           title: 'Mật khẩu của bạn đã được thay đổi!'
         });

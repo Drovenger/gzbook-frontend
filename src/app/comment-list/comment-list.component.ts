@@ -64,19 +64,19 @@ export class CommentListComponent implements OnInit {
 
   deleteComment(commentId: number, index: number) {
     Swal.fire({
+      icon: 'warning',
       title: 'Bạn muốn xóa bình luận này?',
       text: 'Bạn sẽ không thể hoàn tác!',
-      icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Đồng ý, xóa bình luận!'
+      confirmButtonText: 'Đồng ý, xóa bình luận !'
     })
       .then((result) => {
         if (result.value) {
           Swal.fire(
             'Đã xóa!',
-            'Bình luận đã được xóa',
+            'Bình luận đã được xóa !',
             'success'
           );
           this.commentService.deleteComment(commentId).subscribe(

@@ -59,7 +59,6 @@ export class UserInfoComponent implements OnInit {
               for (let j = 0; j < this.friendListLogin.length; j++) {
                 if (this.friendList[i].id === this.friendListLogin[j].id) {
                   this.mutualFriendList.push(this.friendList[i]);
-
                   console.log(this.friendList[i]);
                 }
               }
@@ -67,8 +66,7 @@ export class UserInfoComponent implements OnInit {
           },
           error => console.error(error)
         );
-      }
-    );
+      });
   }
 
 
@@ -114,5 +112,4 @@ export class UserInfoComponent implements OnInit {
       error => console.error(error)
     );
   }
-
 }

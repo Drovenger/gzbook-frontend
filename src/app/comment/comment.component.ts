@@ -7,6 +7,7 @@ import {PostService} from '../service/post.service';
 import {FriendService} from '../service/friend/friend.service';
 import {IUser} from '../model/IUser';
 import {IPost} from '../model/IPost';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-comment',
@@ -14,18 +15,23 @@ import {IPost} from '../model/IPost';
   styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent implements OnInit {
+
   addCommentForm: FormGroup;
   @Output() newComment = new EventEmitter();
   @Input() postId;
   user: IUser;
-  isFriend: boolean =false;
+  isFriend = false;
   userLogin: IUser;
-  post : IPost;
-  isMe:boolean = false;
+  post: IPost;
+  isMe = false;
 
-  constructor(private commentService: CommentService, private fb:FormBuilder, private tokenStorage: TokenStorageService, private userService: UsersService
-    ,private postService: PostService,
-              private friendService: FriendService) { }
+  constructor(private commentService: CommentService,
+              private fb: FormBuilder,
+              private tokenStorage: TokenStorageService,
+              private userService: UsersService,
+              private postService: PostService,
+              private friendService: FriendService) {
+  }
 
   ngOnInit(): void {
     this.getUser();
@@ -37,19 +43,23 @@ export class CommentComponent implements OnInit {
       commentLike: '',
       commentDislike: '',
       commentTime: ''
-    })
+    });
   }
 
-  addComment(){
-    if (this.isFriend||this.isMe){
+  addComment() {
+    if (this.isFriend || this.isMe) {
       let comment = this.addCommentForm.value;
 
       this.commentService.addNewComment(comment).subscribe(
         res => {
           this.newComment.emit(comment);
-        }
-      )
-    } else{ alert("You are not friend!");
+        });
+    } else {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Cảnh báo !',
+        text: 'Chỉ bạn bè mới có thể bình luận!'
+      });
     }
     this.addCommentForm.reset({
       userId: this.tokenStorage.getUser().id,
@@ -58,22 +68,26 @@ export class CommentComponent implements OnInit {
       commentLike: '',
       commentDislike: '',
       commentTime: ''
-    })
+    });
   }
 
   getUser() {
     this.userService.findUserById(this.tokenStorage.getUser().id).subscribe(
-      res => this.user = <IUser> res
-    )
+      res => this.user = res as IUser
+    );
   }
-  checkFriend(){
+
+  checkFriend() {
     this.postService.getPostById(this.postId).subscribe(
-      response=>{this.post = <IPost>response;
+      response => {
+        this.post = response as IPost;
         this.userService.getUser().subscribe(
-          response => {this.userLogin = <IUser> response;
-            var status;
-            this.friendService.checkFriend(this.userLogin.id,this.post.userId).subscribe(
-              response => {status = response;
+          response => {
+            this.userLogin = response as IUser;
+            let status;
+            this.friendService.checkFriend(this.userLogin.id, this.post.userId).subscribe(
+              response => {
+                status = response;
                 switch (status) {
                   case 0:
                     this.isFriend = false;
@@ -87,17 +101,16 @@ export class CommentComponent implements OnInit {
                   case 3:
                     this.isFriend = false;
                     break;
-                };
-                if (this.userLogin.id==this.post.userId){
+                }
+                if (this.userLogin.id === this.post.userId) {
                   this.isMe = true;
                 }
               },
               error => console.log(error)
-            )
+            );
           },
           error => console.error(error)
         );
-      }
-    )
+      });
   }
 }

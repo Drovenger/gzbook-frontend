@@ -10,6 +10,8 @@ import {TokenStorageService} from '../service/token-storage.service';
 })
 export class ShortcutComponent implements OnInit {
 
+  userId = this.tokenStorageService.getUser().id;
+
   constructor(private tokenStorageService: TokenStorageService,
               private header: HeaderComponent) {
   }
@@ -17,10 +19,7 @@ export class ShortcutComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  userId = this.tokenStorageService.getUser().id;
-
   logOut() {
     this.header.logout();
   }
-
 }
