@@ -2,11 +2,11 @@
   <div class="user-post">
     <div class="friend-info">
       <figure>
-        <a [routerLink]="'/userInfor/'+ post.userId"><img style="height: 3.5vw; width: 3.5vw; object-fit: cover"
+        <a [routerLink]="'/user/'+ post.userId"><img style="height: 3.5vw; width: 3.5vw; object-fit: cover"
                                                             src="{{post.posterAvatar}}" alt=""></a>
       </figure>
       <div class="friend-name">
-        <ins style="text-transform:capitalize"><a [routerLink]="'/userInfor/'+ post.userId"
+        <ins style="text-transform:capitalize"><a [routerLink]="'/user/'+ post.userId"
                                                   title="">{{post.posterName}}</a></ins>
         <span>{{post.createdTime}}</span>
       </div>

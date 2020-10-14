@@ -42,17 +42,17 @@ export class CoverPhotoComponent implements OnInit {
       response => {
         this.user = response as IUser;
         this.friendService.addInviteFriend(this.relatingId, {
-          'id': this.user.id,
-          'username': null,
-          'email': null,
-          'password': null,
-          'gender': null,
-          'dateOfBirth': null,
-          'about': null,
-          'address': null,
-          'avatarUrl': null,
-          'coverPhotoUrl': null,
-          'roles': null
+          id: this.user.id,
+          username: null,
+          email: null,
+          password: null,
+          gender: null,
+          dateOfBirth: null,
+          about: null,
+          address: null,
+          avatarUrl: null,
+          coverPhotoUrl: null,
+          roles: null
         }).subscribe();
       },
       error => console.log(error)
@@ -136,17 +136,17 @@ export class CoverPhotoComponent implements OnInit {
           response => {
             this.userLogin = response as IUser;
             this.friendService.unfriend(this.userLogin.id, statusId, {
-              'id': this.user.id,
-              'username': null,
-              'email': null,
-              'password': null,
-              'gender': null,
-              'dateOfBirth': null,
-              'about': null,
-              'address': null,
-              'avatarUrl': null,
-              'coverPhotoUrl': null,
-              'roles': null
+              id: this.user.id,
+              username: null,
+              email: null,
+              password: null,
+              gender: null,
+              dateOfBirth: null,
+              about: null,
+              address: null,
+              avatarUrl: null,
+              coverPhotoUrl: null,
+              roles: null
             }).subscribe(
               response => {
                 this.isFriend = false;

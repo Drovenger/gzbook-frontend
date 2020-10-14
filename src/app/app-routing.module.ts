@@ -26,7 +26,7 @@ const routes: Routes = [
     component: SearchUserComponent
   },
   {
-    path: 'list',
+    path: 'list-friend',
     component: FriendlistComponent
   },
   {
