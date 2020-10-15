@@ -30,7 +30,7 @@ export class StatusComponent implements OnInit {
   likePost = {
     id: null,
     postId: null,
-    likerId: null,
+    userId: null,
   };
   liked: boolean;
   likeList: ILikePost[];
@@ -91,55 +91,55 @@ export class StatusComponent implements OnInit {
       });
   }
 
-  // likeAPost() {
-  //   this.likePost.postId = this.post.id;
-  //   this.likePost.likerId = this.tokenStorage.getUser().id;
-  //   this.likePostService.newLikePost(this.likePost).subscribe(
-  //     res => {
-  //       this.checkLikedStatus();
-  //       this.post.postLike++;
-  //     }
-  //   );
-  // }
+  likeAPost() {
+    this.likePost.postId = this.post.id;
+    this.likePost.userId = this.tokenStorage.getUser().id;
+    this.likePostService.newLikePost(this.likePost).subscribe(
+      res => {
+        this.checkLikedStatus();
+        this.post.postLike++;
+      }
+    );
+  }
 
-  // unLikeAPost() {
-  //   this.likePostService.findAllLikePost().subscribe(
-  //     res => {
-  //       this.likeList = res as ILikePost[];
-  //       for (let i = 0; i < this.likeList.length; i++) {
-  //         if (this.likeList[i].likerId === this.tokenStorage.getUser().id && this.likeList[i].postId === this.post.id) {
-  //           this.likePostService.unLikeAPost(this.likeList[i].id).subscribe();
-  //           this.post.postLike--;
-  //           this.liked = false;
-  //         }
-  //       }
-  //     }
-  //   );
-  // }
+  unLikeAPost() {
+    this.likePostService.findAllLikePost().subscribe(
+      res => {
+        this.likeList = res as ILikePost[];
+        for (let i = 0; i < this.likeList.length; i++) {
+          if (this.likeList[i].userId === this.tokenStorage.getUser().id && this.likeList[i].postId === this.post.id) {
+            this.likePostService.unLikeAPost(this.likeList[i].id).subscribe();
+            this.post.postLike--;
+            this.liked = false;
+          }
+        }
+      }
+    );
+  }
 
-  // checkLikedStatus() {
-  //   this.liked = false;
-  //   this.likePostService.findAllLikePost().subscribe(
-  //     res => {
-  //       this.likeList = res as ILikePost[];
-  //       for (let i = 0; i < this.likeList.length; i++) {
-  //         if (this.actRoute.snapshot.params.id == null || !window.location.href.includes('status')) {
-  //           if (this.likeList[i].postId === this.post.id) {
-  //             if (this.likeList[i].likerId === this.tokenStorage.getUser().id) {
-  //               this.liked = true;
-  //             }
-  //           }
-  //         } else {
-  //           if (this.likeList[i].postId === parseInt(this.actRoute.snapshot.params.id)) {
-  //             if (this.likeList[i].likerId === this.tokenStorage.getUser().id) {
-  //               this.liked = true;
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   );
-  // }
+  checkLikedStatus() {
+    this.liked = false;
+    this.likePostService.findAllLikePost().subscribe(
+      res => {
+        this.likeList = res as ILikePost[];
+        for (let i = 0; i < this.likeList.length; i++) {
+          if (this.actRoute.snapshot.params.id == null || !window.location.href.includes('status')) {
+            if (this.likeList[i].postId === this.post.id) {
+              if (this.likeList[i].userId === this.tokenStorage.getUser().id) {
+                this.liked = true;
+              }
+            }
+          } else {
+            if (this.likeList[i].postId === parseInt(this.actRoute.snapshot.params.id)) {
+              if (this.likeList[i].userId === this.tokenStorage.getUser().id) {
+                this.liked = true;
+              }
+            }
+          }
+        }
+      }
+    );
+  }
 
   deletePost(postId: number) {
     Swal.fire({
