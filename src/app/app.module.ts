@@ -30,6 +30,7 @@ import {StatusEditComponent} from './status-edit/status-edit.component';
 import {UserWallComponent} from './user-wall/user-wall.component';
 import {MutualFriendsComponent} from './mutual-friends/mutual-friends.component';
 import {CoverPhotoComponent} from './cover-photo/cover-photo.component';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import {CoverPhotoComponent} from './cover-photo/cover-photo.component';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireDatabaseModule
   ],
   providers: [
     authInterceptorProviders,
