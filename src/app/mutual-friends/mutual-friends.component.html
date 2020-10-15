@@ -1,5 +1,8 @@
 <div class="widget friend-list stick-widget">
-  <h4 class="widget-title">Mutual Friends</h4>
+  <div [ngSwitch]="idLogin">
+    <h4 class="widget-title" *ngSwitchCase="idUser">Friends</h4>
+    <h4 class="widget-title" *ngSwitchDefault>Mutual Friends</h4>
+  </div>
   <ul id="people-list" class="friendz-list">
     <li *ngFor="let friend of friendList" [routerLink]="'/user/' + friend.id">
       <figure>

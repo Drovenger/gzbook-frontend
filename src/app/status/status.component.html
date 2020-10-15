@@ -42,12 +42,12 @@
           </div>
           <div class="we-video-info">
             <ul>
-              <li (click)="likeAPost()" *ngIf="!liked">
-                <span class="like" data-toggle="tooltip" title="Like"><i class="ti-heart"></i><ins>{{post.postLike}}</ins></span>
-              </li>
-              <li (click)="unLikeAPost()" *ngIf="liked">
-                <span class="like" data-toggle="tooltip" title="UnLike"><i class="ti-heart" style="color: red"></i><ins>{{post.postLike}}</ins></span>
-              </li>
+<!--              <li (click)="likeAPost()" *ngIf="!liked">-->
+<!--                <span class="like" data-toggle="tooltip" title="Like"><i class="ti-heart"></i><ins>{{post.postLike}}</ins></span>-->
+<!--&lt;!&ndash;              </li>&ndash;&gt;-->
+<!--              <li (click)="unLikeAPost()" *ngIf="liked">-->
+<!--                <span class="like" data-toggle="tooltip" title="UnLike"><i class="ti-heart" style="color: red"></i><ins>{{post.postLike}}</ins></span>-->
+<!--              </li>-->
               <li>
               <span class="comment" data-toggle="tooltip" title="Comments">
                 <i class="fa fa-comments-o"></i>
@@ -80,7 +80,6 @@
          aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="post">
       <app-status-edit [post]="post"></app-status-edit>
     </div>
-
     <div class="modal fade" [attr.id]="'showLikerList' + post.id" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel" aria-hidden="true">
       <app-status-liker-list [id]=post.id></app-status-liker-list>

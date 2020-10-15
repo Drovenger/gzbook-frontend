@@ -19,6 +19,7 @@ declare var $: any;
 export class StatusEditComponent implements OnInit {
 
   @Input() post: IPost;
+
   constructor(private userService: UserService,
               private postService: PostService,
               private commentService: CommentService,
