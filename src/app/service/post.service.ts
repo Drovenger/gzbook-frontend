@@ -37,7 +37,7 @@ export class PostService {
   }
 
   searchPostByIdAndTextPost(id: number, textPost: string) {
-    return this.http.get(this.API_URL + 'searchPost/' + id + '/' + textPost);
+    return this.http.get(this.API_URL + 'search/' + id + '?text=' + textPost);
   }
 
   getAllImageByUserId(id: number) {
