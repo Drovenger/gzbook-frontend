@@ -1,6 +1,4 @@
-// @ts-ignore
 import {Component, Input, OnInit} from '@angular/core';
-// @ts-ignore
 import {AngularFireStorage} from '@angular/fire/storage';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CommentService} from '../service/comment.service';
@@ -21,8 +19,6 @@ declare var $: any;
 export class StatusEditComponent implements OnInit {
 
   @Input() post: IPost;
-
-  // @ts-ignore
   constructor(private userService: UserService,
               private postService: PostService,
               private commentService: CommentService,
@@ -35,8 +31,6 @@ export class StatusEditComponent implements OnInit {
   }
 
 
-  // @ts-ignore
-  // @ts-ignore
   onSubmit(form: NgForm) {
     this.post.textPost = form.value.textPost;
     this.post.imagePost = form.value.imagePost;
