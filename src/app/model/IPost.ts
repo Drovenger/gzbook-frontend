@@ -6,7 +6,7 @@ export interface IPost {
   posterAvatar: string;
   posterName: string;
   textPost: string;
-  imagePost: string;
+  imageUrl: string;
   videoPost: string;
   linkPost: string;
   createdTime: string;

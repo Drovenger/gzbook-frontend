@@ -29,12 +29,11 @@ import {CommentEditComponent} from './comment-edit/comment-edit.component';
 import {StatusEditComponent} from './status-edit/status-edit.component';
 import {UserWallComponent} from './user-wall/user-wall.component';
 import {CoverPhotoComponent} from './cover-photo/cover-photo.component';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { MutualFriendsComponent } from './mutual-friends/mutual-friends.component';
 import { StatusLikerListComponent } from './status-liker-list/status-liker-list.component';
 import { CommentLikeComponent } from './comment-like/comment-like.component';
 import { CommentLikerListComponent } from './comment-liker-list/comment-liker-list.component';
-
-
 
 @NgModule({
   declarations: [
@@ -71,6 +70,7 @@ import { CommentLikerListComponent } from './comment-liker-list/comment-liker-li
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireDatabaseModule
   ],
   providers: [
     authInterceptorProviders,

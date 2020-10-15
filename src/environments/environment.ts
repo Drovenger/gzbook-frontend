@@ -6,13 +6,17 @@ export const environment = {
   production: false,
   URL: 'http://localhost:8080/',
   firebase: {
-    apiKey: 'AIzaSyBe3LorG-dDVWU85LnYfO4tzbQArpHR-8I',
-    authDomain: 'http://localhost:4200',
-    databaseURL: 'https://console.firebase.google.com/u/0/project/porject-module6-vh2/settings/general?hl=vi',
-    projectId: 'porject-module6-vh2',
-    storageBucket: 'porject-module6-vh2.appspot.com',
-    messagingSenderId: '178858428950'
+    apiKey: "AIzaSyAVADDtuS6L7ipGSG-MUaODQkURxTuPlc4",
+    authDomain: "gzbook-5fd15.firebaseapp.com",
+    databaseURL: "https://gzbook-5fd15.firebaseio.com",
+    projectId: "gzbook-5fd15",
+    storageBucket: "gzbook-5fd15.appspot.com",
+    messagingSenderId: "387249051927",
+    appId: "1:387249051927:web:619d1a594d56d732027f52",
+    measurementId: "G-NC44R8HE7E"
   }
+
+
 };
 
 /*
