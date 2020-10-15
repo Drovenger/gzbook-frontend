@@ -10,6 +10,8 @@ Technology:
 
 - Bootstrap
 
+- Firebase
+
 - IDE: WebStorm
 
 
