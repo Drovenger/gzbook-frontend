@@ -38,7 +38,7 @@ export class StatusComponent implements OnInit {
   constructor(private userService: UserService,
               private postService: PostService,
               private commentService: CommentService,
-              // private likePostService: LikePostService,
+              private likePostService: LikePostService,
               private tokenStorage: TokenStorageService,
               private actRoute: ActivatedRoute,
               private router: Router) {
@@ -46,7 +46,7 @@ export class StatusComponent implements OnInit {
 
   ngOnInit(): void {
     this.showPost();
-    // this.checkLikedStatus();
+    this.checkLikedStatus();
     this.userService.getUser().subscribe(
       res => {
         this.userLogin = res as IUser;
