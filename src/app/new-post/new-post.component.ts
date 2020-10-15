@@ -20,7 +20,7 @@ export class NewPostComponent implements OnInit {
   creatPostForm: FormGroup;
   user: IUser;
   post: IPost;
-  downloadURL = '';
+
 
   constructor(private postService: PostService,
               private fb: FormBuilder,
@@ -52,7 +52,11 @@ export class NewPostComponent implements OnInit {
 
   creatPost() {
     this.post = this.creatPostForm.value;
-    this.post.imagePost = this.downloadURL;
+    this.imageLink = false;
+    if (this.downloadURL) {
+      this.post.imageUrl = this.downloadURL;
+    }
+
     this.postService.creatNewPost(this.post).subscribe(
       res => {
         this.newPost.emit(this.post);
@@ -67,13 +71,12 @@ export class NewPostComponent implements OnInit {
             postLike: 0,
             postDislike: 0,
             status: 3
-          }
-        );
+          });
         this.downloadURL = '';
-      }
-    );
+      });
   }
 
+  downloadURL: string = '';
 
   uploadFile(event) {
     let file = event.target.files[0];
@@ -86,6 +89,7 @@ export class NewPostComponent implements OnInit {
         url => {
           this.downloadURL = url;
           this.creatPostForm.value.imagePost = url;
+          console.log(url)
         }))
     )
       .subscribe();
@@ -94,6 +98,12 @@ export class NewPostComponent implements OnInit {
   cancelPostImg() {
     this.creatPostForm.value.imagePost = '';
     this.downloadURL = '';
+  }
+
+  imageLink: boolean = false;
+
+  insertImageLink() {
+    this.imageLink = !this.imageLink;
   }
 
 }

@@ -7,8 +7,9 @@ import {UserService} from '../service/user.service';
 import {PostService} from '../service/post.service';
 import {finalize} from 'rxjs/operators';
 import {NgForm} from '@angular/forms';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
+declare var $: any;
 
 @Component({
   selector: 'app-status-edit',
@@ -28,24 +29,22 @@ export class StatusEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
 
   onSubmit(form: NgForm) {
     this.post.textPost = form.value.textPost;
-    this.post.imagePost = form.value.imagePost;
+    this.post.imageUrl = form.value.imagePost;
     this.postService.updatePost(this.post).subscribe(res => {
-      swal({
+      Swal.fire({
         icon: 'success',
         title: 'Nội dung đã được thay đổi!'
       });
     });
-    // this.router.navigateByUrl('/');
   }
 
   deleteImage() {
-    this.post.imagePost = '';
+    this.post.imageUrl = '';
   }
 
   uploadFile(event) {
@@ -56,7 +55,7 @@ export class StatusEditComponent implements OnInit {
 
     task.snapshotChanges().pipe(
       finalize(() => fileRef.getDownloadURL().subscribe(
-        url => this.post.imagePost = url))
+        url => this.post.imageUrl = url))
     )
       .subscribe();
   }

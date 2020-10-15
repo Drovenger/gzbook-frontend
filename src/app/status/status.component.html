@@ -2,11 +2,11 @@
   <div class="user-post">
     <div class="friend-info">
       <figure>
-<!--        <a [routerLink]="'/userInfor/'+ post.posterId"><img style="height: 3.5vw; width: 3.5vw; object-fit: cover"-->
-<!--                                                            src="{{post.posterAvatar}}" alt=""></a>-->
+        <a [routerLink]="'/user/'+ post.userId"><img style="height: 3.5vw; width: 3.5vw; object-fit: cover"
+                                                     src="{{post.posterAvatar}}" alt=""></a>
       </figure>
       <div class="friend-name">
-        <ins style="text-transform:capitalize"><a [routerLink]="'/userInfor/'+ post.userId"
+        <ins style="text-transform:capitalize"><a [routerLink]="'/user/'+ post.userId"
                                                   title="">{{post.posterName}}</a></ins>
         <span>{{post.createdTime}}</span>
       </div>
@@ -14,20 +14,20 @@
         <div class="description">
           <a [routerLink]="'/status/'+ post.id">
             <p>{{post.textPost}}</p>
-            <img src="{{post.imagePost}}" alt="">
+            <img src="{{post.imageUrl}}" alt="">
           </a>
           <div class="post-meta" *ngIf="sharedPost" [routerLink]="'/status/'+ sharedPost.id">
             <div class="user-post">
               <div class="friend-info">
                 <div class="post-meta">
-                  <div class="linked-image align-left" *ngIf="sharedPost.imagePost">
-                    <img alt="" src="{{sharedPost.imagePost}}">
+                  <div class="linked-image align-left" *ngIf="sharedPost.imageUrl">
+                    <img alt="" src="{{sharedPost.imageUrl}}">
                   </div>
                   <div class="detail">
                     <div class="friend-info">
                       <figure>
-<!--                        <img style="height: 2.3vw; width: 2.3vw; object-fit: cover" src="{{sharedPost.posterAvatar}}"-->
-<!--                             alt="">-->
+                        <img style="height: 2.3vw; width: 2.3vw; object-fit: cover" src="{{sharedPost.posterAvatar}}"
+                             alt="">
                       </figure>
                       <div class="friend-name">
                         <ins style="text-transform:capitalize"><a href="#" title="">{{sharedPost.posterName}}</a></ins>
@@ -35,7 +35,6 @@
                       </div>
                     </div>
                     <h5 class="m-3">{{sharedPost.textPost}}</h5>
-                    {{post.id}}
                   </div>
                 </div>
               </div>
@@ -56,11 +55,13 @@
               </span>
               </li>
               <li data-toggle="tooltip" title="Peoples like this post">
-                <span data-toggle="modal" [attr.data-target]="'#showLikerList' + post.id"><i class="fa fa-male"></i></span>
+                <span data-toggle="modal" [attr.data-target]="'#showLikerList' + post.id"><i
+                  class="fa fa-male"></i></span>
               </li>
               <ng-template [ngIf]="userLogin.id==post.userId">
                 <li data-toggle="tooltip" title="Edit">
-                  <span data-toggle="modal" [attr.data-target]="'#modal' + post.id"><i class="fa fa-pencil-square-o"></i></span>
+                  <span data-toggle="modal" [attr.data-target]="'#modal' + post.id"><i
+                    class="fa fa-pencil-square-o"></i></span>
                 </li>
                 <li data-toggle="tooltip" title="Delete post">
                   <span><i class="fa fa-trash" (click)="deletePost(post.id)"></i></span>
@@ -74,15 +75,15 @@
         </div>
       </div>
     </div>
-    <!--    <app-comment-list [id]="post.id" (newComment)="addNewComment($event)"-->
-    <!--                      (delComment)="delComment($event)"></app-comment-list>-->
+    <app-comment-list [postId]="post.id" (newComment)="addNewComment($event)"
+                      (delComment)="delComment($event)"></app-comment-list>
   </div>
-    <div class="modal fade" [attr.id]="'modal' + post.id" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="post">
-      <app-status-edit [post]="post"></app-status-edit>
-    </div>
-
-  <!--  <div class="modal fade" [attr.id]="'showLikerList' + post.id" tabindex="-1" role="dialog"-->
-  <!--       aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-  <!--    <app-status-liker-list [id]=post.id></app-status-liker-list>-->
+  <div class="modal fade" [attr.id]="'modal' + post.id" tabindex="-1" role="dialog"
+       aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="post">
+    <app-status-edit [post]="post"></app-status-edit>
+  </div>
+  <div class="modal fade" [attr.id]="'showLikerList' + post.id" tabindex="-1" role="dialog"
+       aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <app-status-liker-list [id]=post.id></app-status-liker-list>
+  </div>
 </div>
