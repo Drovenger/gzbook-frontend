@@ -25,15 +25,15 @@ export class PostService {
   }
 
   getAllPostByUserId(id: number) {
-    return this.http.get(this.API_URL + 'findPostByPosterId/' + id);
+    return this.http.get(this.API_URL + 'user/' + id);
   }
 
   deletePost(postId: number) {
     return this.http.delete(this.API_URL + 'delete/' + postId);
   }
 
-  updatePost(postId: number, post) {
-    return this.http.put(this.API_URL + 'update/' + postId, post);
+  updatePost(post) {
+    return this.http.put(this.API_URL + 'update', post);
   }
 
   searchPostByIdAndTextPost(id: number, textPost: string) {

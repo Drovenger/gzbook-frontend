@@ -1,4 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+// @ts-ignore
+import {Component, Input, OnInit} from '@angular/core';
+// @ts-ignore
+import {AngularFireStorage} from '@angular/fire/storage';
+import {ActivatedRoute, Router} from '@angular/router';
+import {CommentService} from '../service/comment.service';
+import {IPost} from '../model/IPost';
+import {UserService} from '../service/user.service';
+import {PostService} from '../service/post.service';
+import {finalize} from 'rxjs/operators';
+import {NgForm} from '@angular/forms';
+import Swal from 'sweetalert2';
+
+declare var $: any;
 
 @Component({
   selector: 'app-status-edit',
@@ -7,9 +20,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatusEditComponent implements OnInit {
 
-  constructor() { }
+  @Input() post: IPost;
+
+  // @ts-ignore
+  constructor(private userService: UserService,
+              private postService: PostService,
+              private commentService: CommentService,
+              private actRoute: ActivatedRoute,
+              private storage: AngularFireStorage,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
+
+  // @ts-ignore
+  // @ts-ignore
+  onSubmit(form: NgForm) {
+    this.post.textPost = form.value.textPost;
+    this.post.imagePost = form.value.imagePost;
+    this.postService.updatePost(this.post).subscribe(res => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Nội dung đã được thay đổi!'
+      });
+    });
+  }
+
+  deleteImage() {
+    this.post.imagePost = '';
+  }
+
+  uploadFile(event) {
+    let file = event.target.files[0];
+    let filePath = file.name;
+    let fileRef = this.storage.ref(filePath);
+    let task = this.storage.upload(filePath, file);
+
+    task.snapshotChanges().pipe(
+      finalize(() => fileRef.getDownloadURL().subscribe(
+        url => this.post.imagePost = url))
+    )
+      .subscribe();
+  }
+
+  selectStatus(event) {
+    this.post.status = event;
+    console.log(this.post.status);
+  }
 }

@@ -1,6 +1,6 @@
 export interface IComment {
-  commentId: number;
-  commenterId: number;
+  id: number;
+  userId: number;
   postId: number;
   content: string;
   commentLike: number;
@@ -8,4 +8,5 @@ export interface IComment {
   commentTime: string;
   commenterName: string;
   commenterAvatar: string;
+  edited: number;
 }

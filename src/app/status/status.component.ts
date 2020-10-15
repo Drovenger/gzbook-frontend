@@ -9,7 +9,7 @@ import {PostService} from '../service/post.service';
 import {UserService} from '../service/user.service';
 import {LikePostService} from '../service/like-post.service';
 import {CommentService} from '../service/comment.service';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-status',
@@ -30,7 +30,7 @@ export class StatusComponent implements OnInit {
   likePost = {
     id: null,
     postId: null,
-    likerId: null,
+    userId: null,
   };
   liked: boolean;
   likeList: ILikePost[];
@@ -57,7 +57,7 @@ export class StatusComponent implements OnInit {
   showPost() {
     let id: number;
     if (this.actRoute.snapshot.params.id == null || !window.location.href.includes('status')) {
-      id = this.post.postId;
+      id = this.post.id;
     } else {
       id = parseInt(this.actRoute.snapshot.params.id);
     }
@@ -69,7 +69,7 @@ export class StatusComponent implements OnInit {
             let user = res as IUser;
             this.post.posterName = user.username;
             this.post.posterAvatar = user.avatarUrl;
-            this.commentService.getCommentByPostId(this.post.postId).subscribe(
+            this.commentService.getCommentByPostId(this.post.id).subscribe(
               commentList => {
                 this.post.commentList = commentList as IComment[];
               }
@@ -85,18 +85,15 @@ export class StatusComponent implements OnInit {
                   let user = res as IUser;
                   this.sharedPost.posterName = user.username;
                   this.sharedPost.posterAvatar = user.avatarUrl;
-                }
-              );
-            }
-          );
+                });
+            });
         }
-      }
-    );
+      });
   }
 
   likeAPost() {
-    this.likePost.postId = this.post.postId;
-    this.likePost.likerId = this.tokenStorage.getUser().id;
+    this.likePost.postId = this.post.id;
+    this.likePost.userId = this.tokenStorage.getUser().id;
     this.likePostService.newLikePost(this.likePost).subscribe(
       res => {
         this.checkLikedStatus();
@@ -110,7 +107,7 @@ export class StatusComponent implements OnInit {
       res => {
         this.likeList = res as ILikePost[];
         for (let i = 0; i < this.likeList.length; i++) {
-          if (this.likeList[i].likerId === this.tokenStorage.getUser().id && this.likeList[i].postId === this.post.postId) {
+          if (this.likeList[i].userId === this.tokenStorage.getUser().id && this.likeList[i].postId === this.post.id) {
             this.likePostService.unLikeAPost(this.likeList[i].id).subscribe();
             this.post.postLike--;
             this.liked = false;
@@ -127,14 +124,14 @@ export class StatusComponent implements OnInit {
         this.likeList = res as ILikePost[];
         for (let i = 0; i < this.likeList.length; i++) {
           if (this.actRoute.snapshot.params.id == null || !window.location.href.includes('status')) {
-            if (this.likeList[i].postId === this.post.postId) {
-              if (this.likeList[i].likerId === this.tokenStorage.getUser().id) {
+            if (this.likeList[i].postId === this.post.id) {
+              if (this.likeList[i].userId === this.tokenStorage.getUser().id) {
                 this.liked = true;
               }
             }
           } else {
             if (this.likeList[i].postId === parseInt(this.actRoute.snapshot.params.id)) {
-              if (this.likeList[i].likerId === this.tokenStorage.getUser().id) {
+              if (this.likeList[i].userId === this.tokenStorage.getUser().id) {
                 this.liked = true;
               }
             }
@@ -144,40 +141,37 @@ export class StatusComponent implements OnInit {
     );
   }
 
-  deletePost(postId: any) {
-    swal({
+  deletePost(postId: number) {
+    Swal.fire({
       title: 'Xóa bài viết?',
       text: 'Bạn có chắc chắn muốn xóa bài viết này không?',
-      icon: 'warning',
-      dangerMode: true,
+      icon: 'warning'
     })
       .then(willDelete => {
-          if (willDelete) {
-            this.commentService.getCommentByPostId(postId).subscribe(
-              commentList => {
-                let comments = commentList as IComment[];
-                for (let i = 0; i < comments.length; i++) {
-                  this.commentService.deleteComment(comments[i].commentId).subscribe(
-                    res => console.log('Đã xóa bài viết!')
-                  );
-                }
+        if (willDelete) {
+          console.log(postId);
+          this.commentService.getCommentByPostId(postId).subscribe(
+            commentList => {
+              let comments = commentList as IComment[];
+              for (let i = 0; i < comments.length; i++) {
+                this.commentService.deleteComment(comments[i].id).subscribe(
+                  res => console.log('Đã xóa bài viết!')
+                );
               }
-            );
-            this.postService.deletePost(postId).subscribe(
-              res => {
-                swal({
-                  icon: 'success',
-                  title: 'Bài viết của bạn đã được xóa!'
-                });
-                this.indexDelPost.emit(this.index);
-                if (this.actRoute.snapshot.params.id != null) {
-                  this.router.navigate(['/home']);
-                }
+            });
+          this.postService.deletePost(postId).subscribe(
+            res => {
+              Swal.fire({
+                icon: 'success',
+                title: 'Bài viết của bạn đã được xóa!'
+              });
+              this.indexDelPost.emit(this.index);
+              if (this.actRoute.snapshot.params.id != null) {
+                this.router.navigate(['/home']);
               }
-            );
-          }
+            });
         }
-      );
+      });
   }
 
   addNewComment(value) {
@@ -189,36 +183,33 @@ export class StatusComponent implements OnInit {
   }
 
   sharePost(postId: number) {
-    swal({
+    Swal.fire({
       title: 'Chia sẻ',
       text: 'Bạn có muốn chia sẻ bài viết này?',
-      icon: 'info',
-      dangerMode: false,
+      icon: 'info'
     })
       .then(share => {
-          if (share) {
-            this.postService.creatNewPost({
-              userId: this.tokenStorage.getUser().id,
-              textPost: '',
-              imagePost: '',
-              videoPost: '',
-              linkPost: postId,
-              postDate: '',
-              postLike: 0,
-              postDislike: 0,
-              status: 3
-            }).subscribe(
-              res => {
-                this.sharePostEvent.emit(postId);
-              }
-            );
-            swal({
-              icon: 'success',
-              title: 'Bài viết này đã được chia sẻ!'
-            });
-          }
+        if (share) {
+          this.postService.creatNewPost({
+            userId: this.tokenStorage.getUser().id,
+            textPost: '',
+            imagePost: '',
+            videoPost: '',
+            linkPost: postId,
+            postDate: '',
+            postLike: 0,
+            postDislike: 0,
+            status: 3
+          }).subscribe(
+            res => {
+              this.sharePostEvent.emit(postId);
+            }
+          );
+          Swal.fire({
+            icon: 'success',
+            title: 'Bài viết này đã được chia sẻ!'
+          });
         }
-      );
+      });
   }
-
 }

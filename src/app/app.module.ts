@@ -18,14 +18,59 @@ import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {authInterceptorProviders} from './auth.interceptor';
-import { StatusComponent } from './status/status.component';
-import { UserInfoComponent } from './user-info/user-info.component';
-import { EditUserInfoComponent } from './edit-user-info/edit-user-info.component';
-import { EditComponent } from './edit/edit.component';
-import { EditPasswordComponent } from './edit-password/edit-password.component';
-import { StatusEditComponent } from './status-edit/status-edit.component';
+// @ts-ignore
+import {StatusComponent} from './status/status.component';
+import {CommentComponent} from './comment/comment.component';
+import {CommentListComponent} from './comment-list/comment-list.component';
+import {UserInfoComponent} from './user-info/user-info.component';
+import {EditUserInfoComponent} from './edit-user-info/edit-user-info.component';
+import {EditComponent} from './edit/edit.component';
+// @ts-ignore
+import {EditPasswordComponent} from './edit-password/edit-password.component';
+import {CommentEditComponent} from './comment-edit/comment-edit.component';
+import {StatusEditComponent} from './status-edit/status-edit.component';
+import {UserWallComponent} from './user-wall/user-wall.component';
+import {CoverPhotoComponent} from './cover-photo/cover-photo.component';
+import { MutualFriendsComponent } from './mutual-friends/mutual-friends.component';
+import { StatusLikerListComponent } from './status-liker-list/status-liker-list.component';
+import { CommentLikeComponent } from './comment-like/comment-like.component';
+import { CommentLikerListComponent } from './comment-liker-list/comment-liker-list.component';
 
 
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +79,8 @@ import { StatusEditComponent } from './status-edit/status-edit.component';
     LoginAndRegisterComponent,
     HeaderComponent,
     FriendlistComponent,
+    CommentComponent,
+    CommentListComponent,
     SearchUserComponent,
     ShortcutComponent,
     NewPostComponent,
@@ -42,7 +89,14 @@ import { StatusEditComponent } from './status-edit/status-edit.component';
     EditUserInfoComponent,
     EditComponent,
     EditPasswordComponent,
-    StatusEditComponent
+    CommentEditComponent,
+    StatusEditComponent,
+    UserWallComponent,
+    CoverPhotoComponent,
+    MutualFriendsComponent,
+    StatusLikerListComponent,
+    CommentLikeComponent,
+    CommentLikerListComponent
   ],
   imports: [
     BrowserModule,

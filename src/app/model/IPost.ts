@@ -1,7 +1,7 @@
 import {IComment} from './IComment';
 
 export interface IPost {
-  postId: number;
+  id: number;
   userId: number;
   posterAvatar: string;
   posterName: string;

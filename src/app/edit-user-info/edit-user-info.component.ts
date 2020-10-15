@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TokenStorageService} from '../service/token-storage.service';
 import {IUser} from '../model/IUser';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-user-info',
@@ -60,12 +61,11 @@ export class EditUserInfoComponent implements OnInit {
     let data = this.userEditForm.value;
     this.userService.editUser(this.tokenStorage.getUser().id, data).subscribe(
       res => {
-        swals({
+        Swal.fire({
           icon: 'success',
           title: 'Thông tin cá nhân của bạn đã được thay đổi!'
         });
-      }
-    );
+      });
     this.router.navigate(['/']);
   }
 
@@ -82,9 +82,7 @@ export class EditUserInfoComponent implements OnInit {
       this.userService.checkEmailExist(this.userEditForm.value.userEmail).subscribe(
         res => {
           this.emailExist = res as boolean;
-        }
-      );
+        });
     }
   }
-
 }
