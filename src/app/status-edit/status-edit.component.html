@@ -13,7 +13,7 @@
           <input class="form-control" type="text" hidden name="imagePost" [ngModel]="post.imageUrl">
           <button *ngIf="post.imageUrl != ''" type="button" class="close mb-1" aria-label="Close" (click)="deleteImage()"><span aria-hidden="true" class="fa fa-trash"></span></button>
           <label class="fileContainer" *ngIf="post.imageUrl === ''">
-            <i class="close fa fa-image"></i>
+            <i class="close fa fa-camera"></i>
             <input type="file" accept="image/*" (change)="uploadFile($event)">
           </label>
           <img src="{{post.imageUrl}}" alt="">

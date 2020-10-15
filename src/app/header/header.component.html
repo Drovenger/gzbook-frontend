@@ -208,10 +208,11 @@
         <!--        </li>-->
       </ul>
       <div class="user-img">
-                <img style="width: 50px; height: 50px; object-fit: cover" src="{{user.avatarUrl}}" alt=""
-                     [routerLink]="'/wall/'+ user.id">
-        <a [routerLink]="'/wall/'+ user.id" title=""><span
-          style="font-family: 'Segoe Ui';font-size: 16px; text-transform:capitalize">{{user.username}} </span></a>
+        <img style="width: 50px; height: 50px; object-fit: cover" src="{{user.avatarUrl}}" alt=""
+             [routerLink]="'/wall/'+ user.id">
+        <a [routerLink]="'/wall/'+ user.id" title="">
+          <span style="font-family: 'Segoe Ui';font-size: 16px; text-transform:capitalize">{{user.username}} </span>
+        </a>
       </div>
     </div>
   </div>

@@ -10,6 +10,8 @@ import {UserInfoComponent} from './user-info/user-info.component';
 import {EditUserInfoComponent} from './edit-user-info/edit-user-info.component';
 import {EditPasswordComponent} from './edit-password/edit-password.component';
 import {UserWallComponent} from './user-wall/user-wall.component';
+import {StatusComponent} from './status/status.component';
+import {StatusInfoComponent} from './status-info/status-info.component';
 
 
 const routes: Routes = [
@@ -30,8 +32,9 @@ const routes: Routes = [
     component: FriendlistComponent
   },
   {
-  path: 'commentList',
-  component: CommentListComponent}
+    path: 'commentList',
+    component: CommentListComponent
+  }
   ,
   {
     path: 'user/:id',
@@ -48,6 +51,10 @@ const routes: Routes = [
   {
     path: 'wall/:id',
     component: UserWallComponent
+  },
+  {
+    path: 'status/:id',
+    component: StatusInfoComponent
   }
 ];
 

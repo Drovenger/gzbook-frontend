@@ -28,10 +28,10 @@
                       <li *ngFor="let friend of friendList; let i = index">
                         <div class="nearly-pepls">
                           <figure>
-                            <a [routerLink]="'/user/'+friend.id"><img src="{{friend.avatarUrl}}" alt=""></a>
+                            <a [routerLink]="'/wall/'+friend.id"><img src="{{friend.avatarUrl}}" alt=""></a>
                           </figure>
                           <div class="pepl-info pl-4">
-                            <h4><a [routerLink]="'/user/'+friend.id" title="">{{friend.username}}</a></h4>
+                            <h4><a [routerLink]="'/wall/'+friend.id" title="">{{friend.username}}</a></h4>
                             <a title="" class="add-butn" style="background: #d7184e; color: whitesmoke" data-ripple=""
                                (click)="unFriend(friend.id,3,i)">Hủy kết bạn</a>
                           </div>
@@ -49,11 +49,11 @@
                       <li *ngFor="let friend of pendingList; let i = index">
                         <div class="nearly-pepls">
                           <figure>
-                            <a [routerLink]="'/user/'+friend.id" title=""><img src="{{friend.avatarUrl}}"
+                            <a [routerLink]="'/wall/'+friend.id" title=""><img src="{{friend.avatarUrl}}"
                                                                                     alt=""></a>
                           </figure>
                           <div class="pepl-info">
-                            <h4><a [routerLink]="'/user/'+friend.id" title=""> {{friend.username}}</a></h4>
+                            <h4><a [routerLink]="'/wall/'+friend.id" title=""> {{friend.username}}</a></h4>
                             <a title="" class="add-butn more-action " style="background: #d7184e; color: whitesmoke"
                                (click)="acceptInviteFriend(friend.id,3,i)" data-ripple="">Xóa</a>
                             <a title="" class="add-butn" data-ripple="" style="color: whitesmoke"

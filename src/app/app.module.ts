@@ -34,6 +34,7 @@ import { MutualFriendsComponent } from './mutual-friends/mutual-friends.componen
 import { StatusLikerListComponent } from './status-liker-list/status-liker-list.component';
 import { CommentLikeComponent } from './comment-like/comment-like.component';
 import { CommentLikerListComponent } from './comment-liker-list/comment-liker-list.component';
+import { StatusInfoComponent } from './status-info/status-info.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { CommentLikerListComponent } from './comment-liker-list/comment-liker-li
     MutualFriendsComponent,
     StatusLikerListComponent,
     CommentLikeComponent,
-    CommentLikerListComponent
+    CommentLikerListComponent,
+    StatusInfoComponent
   ],
   imports: [
     BrowserModule,
