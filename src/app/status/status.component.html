@@ -14,14 +14,14 @@
         <div class="description">
           <a [routerLink]="'/status/'+ post.id">
             <p>{{post.textPost}}</p>
-            <img src="{{post.imagePost}}" alt="">
+            <img src="{{post.imageUrl}}" alt="">
           </a>
           <div class="post-meta" *ngIf="sharedPost" [routerLink]="'/status/'+ sharedPost.id">
             <div class="user-post">
               <div class="friend-info">
                 <div class="post-meta">
-                  <div class="linked-image align-left" *ngIf="sharedPost.imagePost">
-                    <img alt="" src="{{sharedPost.imagePost}}">
+                  <div class="linked-image align-left" *ngIf="sharedPost.imageUrl">
+                    <img alt="" src="{{sharedPost.imageUrl}}">
                   </div>
                   <div class="detail">
                     <div class="friend-info">

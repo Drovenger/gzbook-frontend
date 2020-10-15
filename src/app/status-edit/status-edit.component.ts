@@ -34,7 +34,7 @@ export class StatusEditComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.post.textPost = form.value.textPost;
-    this.post.imagePost = form.value.imagePost;
+    this.post.imageUrl = form.value.imagePost;
     this.postService.updatePost(this.post).subscribe(res => {
       Swal.fire({
         icon: 'success',
@@ -44,7 +44,7 @@ export class StatusEditComponent implements OnInit {
   }
 
   deleteImage() {
-    this.post.imagePost = '';
+    this.post.imageUrl = '';
   }
 
   uploadFile(event) {
@@ -55,7 +55,7 @@ export class StatusEditComponent implements OnInit {
 
     task.snapshotChanges().pipe(
       finalize(() => fileRef.getDownloadURL().subscribe(
-        url => this.post.imagePost = url))
+        url => this.post.imageUrl = url))
     )
       .subscribe();
   }
