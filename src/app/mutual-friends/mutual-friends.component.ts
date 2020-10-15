@@ -15,6 +15,7 @@ export class MutualFriendsComponent implements OnInit {
   userLogin:IUser;
   idLogin: number;
   idUserWall: number;
+
   constructor(private userService: UserService,private friendService: FriendService,private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {

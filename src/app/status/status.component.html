@@ -80,8 +80,7 @@
          aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="post">
       <app-status-edit [post]="post"></app-status-edit>
     </div>
-
-  <!--  <div class="modal fade" [attr.id]="'showLikerList' + post.id" tabindex="-1" role="dialog"-->
-  <!--       aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-  <!--    <app-status-liker-list [id]=post.id></app-status-liker-list>-->
+    <div class="modal fade" [attr.id]="'showLikerList' + post.id" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <app-status-liker-list [id]=post.id></app-status-liker-list>
 </div>
